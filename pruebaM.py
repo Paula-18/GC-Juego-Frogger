@@ -2,100 +2,88 @@ from OpenGL.GL import *
 from glew_wish import *
 import glfw
 from math import *
-
-xObstaculo = 0.0
-yObstaculo = 0.6
-
-xCarrito = 0.0
-yCarrito = -0.8
-
-colisionando = False
-
+#ubicacion de la mosca 1
+xMosca1 = -0.8
+yMosca1 = 0.6
+#ubicacion de la mosca 2
+xMosca2 = -0.3
+yMosca2 = 0.6
+#ubicacion de la mosca 3
+xMosca3 = 0.3
+yMosca3 = 0.6
+#ubicacion de la mosca 4
+xMosca4 = 0.8
+yMosca4 = 0.6
+#ubicacion de la rana al iniciar la partida
+xRana = 0.0
+yRana = -0.8
+#variables de colisiones de las moscas
+colisionandoMosca1 = False
+colisionandoMosca2 = False
+colisionandoMosca3 = False
+colisionandoMosca4 = False
+#angulo que se necesita para girar a la rana
 angulo = 0
-# el desfase es debido a que el triangulo en 0 grados voltea
-# hacia arriba y no hacia la derecha
-desfase = 90
 
-velocidad = 1
-velocidad_angular = 180
-
-tiempo_anterior = 0
 
 def checar_colisiones():
-    global colisionando
+    global colisionandoMosca1
+    global colisionandoMosca2
+    global colisionandoMosca3
+    global colisionandoMosca4
     # Si extremaDerechaCarrito > extremaIzquierdaObstaculo
     # Y extremaIzquierdaCarrito < extremaDerechaObstaculo
     # Y extremoSuperiorCarrito > extremoInferiorObstaculo
     # Y extremoInferiorCarrito < extremoSuperiorObstaculo
-    if xCarrito + 0.05 > xObstaculo - 0.15 and xCarrito - 0.05 < xObstaculo + 0.15 and yCarrito + 0.05 > yObstaculo - 0.15 and yCarrito - 0.05 < yObstaculo + 0.15:
-        colisionando = True
-    else:
-        colisionando = False
+    if xRana + 0.05 > xMosca1 - 0.05 and xRana - 0.05 < xMosca1 + 0.05 and yRana + 0.05 > yMosca1 - 0.05 and yRana - 0.05 < yMosca1 + 0.05:
+        colisionandoMosca1 = True
+    if xRana + 0.05 > xMosca2 - 0.05 and xRana - 0.05 < xMosca2 + 0.05 and yRana + 0.05 > yMosca2 - 0.05 and yRana - 0.05 < yMosca2 + 0.05:
+        colisionandoMosca2 = True
+    if xRana + 0.05 > xMosca3 - 0.05 and xRana - 0.05 < xMosca3 + 0.05 and yRana + 0.05 > yMosca3 - 0.05 and yRana - 0.05 < yMosca3 + 0.05:
+        colisionandoMosca3 = True
+    if xRana + 0.05 > xMosca4 - 0.05 and xRana - 0.05 < xMosca4 + 0.05 and yRana + 0.05 > yMosca4 - 0.05 and yRana - 0.05 < yMosca4 + 0.05:
+        colisionandoMosca4 = True
+
 
 
 def actualizar(window):
-    global tiempo_anterior
     global angulo
-    global xCarrito
-    global yCarrito
+    global xRana
+    global yRana
 
-    tiempo_actual = glfw.get_time()
-    tiempo_delta = tiempo_actual - tiempo_anterior
 
     estadoIzquierda = glfw.get_key(window, glfw.KEY_LEFT)
     estadoDerecha = glfw.get_key(window, glfw.KEY_RIGHT)
     estadoAbajo = glfw.get_key(window, glfw.KEY_DOWN)
     estadoArriba = glfw.get_key(window, glfw.KEY_UP)
 
-    if estadoIzquierda == glfw.PRESS and xCarrito - 0.05 > -1:
-        angulo = angulo + (velocidad_angular * tiempo_delta)
+    if estadoIzquierda == glfw.PRESS and xRana - 0.05 > -1:
         angulo = 90
-        xCarrito = xCarrito - 0.001
-    if estadoDerecha == glfw.PRESS and xCarrito + 0.05 < 1:
-        angulo = angulo - (velocidad_angular * tiempo_delta)
+        xRana = xRana - 0.005
+    if estadoDerecha == glfw.PRESS and xRana + 0.05 < 1:
         angulo = 270
-        xCarrito = xCarrito + 0.001
-    if estadoAbajo == glfw.PRESS and yCarrito - 0.05 - 0.001 > -1:
-        angulo = angulo + (velocidad_angular * tiempo_delta)
+        xRana = xRana + 0.005
+    if estadoAbajo == glfw.PRESS and yRana - 0.05 - 0.001 > -1:
         angulo = 180
-        yCarrito = yCarrito - 0.001
+        yRana = yRana - 0.005
     # Para arriba hay que considerar que el viewport también
     # toma en cuenta la barra de titulo
-    if estadoArriba == glfw.PRESS and yCarrito + 0.05 < 1:
-        angulo = angulo + (velocidad_angular * tiempo_delta)
+    if estadoArriba == glfw.PRESS and yRana + 0.05 + 0.1 < 1:
         angulo = 0
-        yCarrito = yCarrito + 0.001
+        yRana = yRana + 0.005
 
     checar_colisiones()
-    tiempo_anterior = tiempo_actual
-
-
-def dibujarObstaculo():
-    global xObstaculo
-    global yObstaculo
-
-    glPushMatrix()
-    glTranslate(xObstaculo, yObstaculo, 0.0)
-    glBegin(GL_QUADS)
-    glColor3f(0.0, 0.0, 1.0)
-    glVertex(-0.15, 0.15, 0.0)
-    glVertex(0.15, 0.15, 0.0)
-    glVertex(0.15, -0.15, 0.0)
-    glVertex(-0.15, -0.15, 0.0)
-    glEnd()
-    glPopMatrix()
 
 def dibujarRana():
-    global colisionando
-    global xCarrito
-    global yCarrito
+    global xRana
+    global yRana
 
     #glScalef(1,1,1) #no se como se usa xd
 
     glPushMatrix()
-    glTranslate(xCarrito, yCarrito, 0.0)
+    glTranslate(xRana, yRana, 0.0)
     glRotate(angulo, 0.0, 0.0, 1.0)
-    #glScalef(0.7,0.7,1) #aqui va xd
+    glScalef(0.7,0.7,1) #aqui va xd
     glBegin(GL_POLYGON)
     #if colisionando == True:
         #glColor3f(1.0, 1.0, 1.0)
@@ -463,35 +451,693 @@ def dibujarTortuga():
         glVertex3f(cos(angulo) * 0.10 - 0.15, sin(angulo) * 0.07 + 0.0, 0.0)
     glEnd()
 
-def dibujarMosca():
+def dibujarMosca1():
+    global colisionandoMosca1
+    global xMosca1
+    global yMosca1
 
-    glBegin(GL_POLYGON)
-    glColor3f(0.0, 0.1, 0.090)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.016 - 0.01, sin(angulo) * 0.016 + 0.0, 0.0)
-    glEnd()
+    glPushMatrix()
+    glTranslate(xMosca1, yMosca1, 0.0)
+    if colisionandoMosca1 == False:
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.016 - 0.01, sin(angulo) * 0.016 + 0.0, 0.0)
+        glEnd()
 
-    glBegin(GL_POLYGON)
-    glColor3f(0.0, 0.1, 0.090)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.02 + 0.01, sin(angulo) * 0.02 + 0.0, 0.0)
-    glEnd()
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.02 + 0.01, sin(angulo) * 0.02 + 0.0, 0.0)
+        glEnd()
 
-    glBegin(GL_TRIANGLES)
-    glColor3f(1.0, 1.0, 1.0)
-    glVertex3f(-0.01, 0.00, 0.0)
-    glVertex3f(0.04, 0.06, 0.0)
-    glVertex3f(0.04, 0.02, 0.0)
-    glEnd()
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, 0.06, 0.0)
+        glVertex3f(0.04, 0.02, 0.0)
+        glEnd()
 
-    glBegin(GL_TRIANGLES)
-    glColor3f(1.0, 1.0, 1.0)
-    glVertex3f(-0.01, 0.00, 0.0)
-    glVertex3f(0.04, -0.06, 0.0)
-    glVertex3f(0.04, -0.02, 0.0)
-    glEnd()
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, -0.06, 0.0)
+        glVertex3f(0.04, -0.02, 0.0)
+        glEnd()
+        
+    else:
+        glScalef(0.7,0.7,1) #aqui va xd
+        glBegin(GL_POLYGON)
+        #if colisionando == True:
+            #glColor3f(1.0, 1.0, 1.0)
+        #else:
+            #glColor3f(0.513, 0.905, 0.180)
+
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+
+        glEnd()
+
+        #Cara
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.06, 0.0)
+        glVertex3f(-0.02, 0.06, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(-0.02, 0.04, 0.0)
+        glVertex3f(-0.03, 0.04, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.04, 0.0)
+        glVertex3f(0.03, 0.04, 0.0)
+        glEnd()
+
+        #Mano derecha
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.03, 0.03, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.06, 0.01, 0.0)
+        glVertex3f(0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, 0.03, 0.0)
+        glVertex3f(0.05, 0.04, 0.0)
+        glVertex3f(0.06, 0.04, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.07, 0.03, 0.0)
+        glVertex3f(0.07, 0.02, 0.0)
+        glVertex3f(0.06, 0.02, 0.0)
+        glEnd()
+
+        #Mano izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, 0.03, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.06, 0.01, 0.0)
+        glVertex3f(-0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, 0.03, 0.0)
+        glVertex3f(-0.05, 0.04, 0.0)
+        glVertex3f(-0.06, 0.04, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.07, 0.03, 0.0)
+        glVertex3f(-0.07, 0.02, 0.0)
+        glVertex3f(-0.06, 0.02, 0.0)
+        glEnd()
+
+        #Pierna derecha
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.03, -0.03, 0.0)
+        glVertex3f(0.05, -0.03, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.04, -0.05, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.05, -0.08, 0.0)
+        glVertex3f(0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, -0.06, 0.0)
+        glVertex3f(0.06, -0.06, 0.0)
+        glVertex3f(0.06, -0.07, 0.0)
+        glVertex3f(0.05, -0.07, 0.0)
+        glEnd()
+
+        #Pierna izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, -0.03, 0.0)
+        glVertex3f(-0.05, -0.03, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.04, -0.05, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.05, -0.08, 0.0)
+        glVertex3f(-0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, -0.06, 0.0)
+        glVertex3f(-0.06, -0.06, 0.0)
+        glVertex3f(-0.06, -0.07, 0.0)
+        glVertex3f(-0.05, -0.07, 0.0)
+        glEnd()
+    glPopMatrix()
+
+def dibujarMosca2():
+    global colisionandoMosca2
+    global xMosca2
+    global yMosca2
+
+    glPushMatrix()
+    glTranslate(xMosca2, yMosca2, 0.0)
+    if colisionandoMosca2 == False:
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.016 - 0.01, sin(angulo) * 0.016 + 0.0, 0.0)
+        glEnd()
+
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.02 + 0.01, sin(angulo) * 0.02 + 0.0, 0.0)
+        glEnd()
+
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, 0.06, 0.0)
+        glVertex3f(0.04, 0.02, 0.0)
+        glEnd()
+
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, -0.06, 0.0)
+        glVertex3f(0.04, -0.02, 0.0)
+        glEnd()
+        
+    else:
+        glScalef(0.7,0.7,1) #aqui va xd
+        glBegin(GL_POLYGON)
+        #if colisionando == True:
+            #glColor3f(1.0, 1.0, 1.0)
+        #else:
+            #glColor3f(0.513, 0.905, 0.180)
+
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+
+        glEnd()
+
+        #Cara
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.06, 0.0)
+        glVertex3f(-0.02, 0.06, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(-0.02, 0.04, 0.0)
+        glVertex3f(-0.03, 0.04, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.04, 0.0)
+        glVertex3f(0.03, 0.04, 0.0)
+        glEnd()
+
+        #Mano derecha
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.03, 0.03, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.06, 0.01, 0.0)
+        glVertex3f(0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, 0.03, 0.0)
+        glVertex3f(0.05, 0.04, 0.0)
+        glVertex3f(0.06, 0.04, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.07, 0.03, 0.0)
+        glVertex3f(0.07, 0.02, 0.0)
+        glVertex3f(0.06, 0.02, 0.0)
+        glEnd()
+
+        #Mano izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, 0.03, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.06, 0.01, 0.0)
+        glVertex3f(-0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, 0.03, 0.0)
+        glVertex3f(-0.05, 0.04, 0.0)
+        glVertex3f(-0.06, 0.04, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.07, 0.03, 0.0)
+        glVertex3f(-0.07, 0.02, 0.0)
+        glVertex3f(-0.06, 0.02, 0.0)
+        glEnd()
+
+        #Pierna derecha
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.03, -0.03, 0.0)
+        glVertex3f(0.05, -0.03, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.04, -0.05, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.05, -0.08, 0.0)
+        glVertex3f(0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, -0.06, 0.0)
+        glVertex3f(0.06, -0.06, 0.0)
+        glVertex3f(0.06, -0.07, 0.0)
+        glVertex3f(0.05, -0.07, 0.0)
+        glEnd()
+
+        #Pierna izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, -0.03, 0.0)
+        glVertex3f(-0.05, -0.03, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.04, -0.05, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.05, -0.08, 0.0)
+        glVertex3f(-0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, -0.06, 0.0)
+        glVertex3f(-0.06, -0.06, 0.0)
+        glVertex3f(-0.06, -0.07, 0.0)
+        glVertex3f(-0.05, -0.07, 0.0)
+        glEnd()
+    glPopMatrix()
+
+def dibujarMosca3():
+    global colisionandoMosca3
+    global xMosca3
+    global yMosca3
+
+    glPushMatrix()
+    glTranslate(xMosca3, yMosca3, 0.0)
+    if colisionandoMosca3 == False:
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.016 - 0.01, sin(angulo) * 0.016 + 0.0, 0.0)
+        glEnd()
+
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.02 + 0.01, sin(angulo) * 0.02 + 0.0, 0.0)
+        glEnd()
+
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, 0.06, 0.0)
+        glVertex3f(0.04, 0.02, 0.0)
+        glEnd()
+
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, -0.06, 0.0)
+        glVertex3f(0.04, -0.02, 0.0)
+        glEnd()
+        
+    else:
+        glScalef(0.7,0.7,1) #aqui va xd
+        glBegin(GL_POLYGON)
+        #if colisionando == True:
+            #glColor3f(1.0, 1.0, 1.0)
+        #else:
+            #glColor3f(0.513, 0.905, 0.180)
+
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+
+        glEnd()
+
+        #Cara
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.06, 0.0)
+        glVertex3f(-0.02, 0.06, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(-0.02, 0.04, 0.0)
+        glVertex3f(-0.03, 0.04, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.04, 0.0)
+        glVertex3f(0.03, 0.04, 0.0)
+        glEnd()
+
+        #Mano derecha
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.03, 0.03, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.06, 0.01, 0.0)
+        glVertex3f(0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, 0.03, 0.0)
+        glVertex3f(0.05, 0.04, 0.0)
+        glVertex3f(0.06, 0.04, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.07, 0.03, 0.0)
+        glVertex3f(0.07, 0.02, 0.0)
+        glVertex3f(0.06, 0.02, 0.0)
+        glEnd()
+
+        #Mano izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, 0.03, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.06, 0.01, 0.0)
+        glVertex3f(-0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, 0.03, 0.0)
+        glVertex3f(-0.05, 0.04, 0.0)
+        glVertex3f(-0.06, 0.04, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.07, 0.03, 0.0)
+        glVertex3f(-0.07, 0.02, 0.0)
+        glVertex3f(-0.06, 0.02, 0.0)
+        glEnd()
+
+        #Pierna derecha
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.03, -0.03, 0.0)
+        glVertex3f(0.05, -0.03, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.04, -0.05, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.05, -0.08, 0.0)
+        glVertex3f(0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, -0.06, 0.0)
+        glVertex3f(0.06, -0.06, 0.0)
+        glVertex3f(0.06, -0.07, 0.0)
+        glVertex3f(0.05, -0.07, 0.0)
+        glEnd()
+
+        #Pierna izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, -0.03, 0.0)
+        glVertex3f(-0.05, -0.03, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.04, -0.05, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.05, -0.08, 0.0)
+        glVertex3f(-0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, -0.06, 0.0)
+        glVertex3f(-0.06, -0.06, 0.0)
+        glVertex3f(-0.06, -0.07, 0.0)
+        glVertex3f(-0.05, -0.07, 0.0)
+        glEnd()
+    glPopMatrix()
+
+def dibujarMosca4():
+    global colisionandoMosca4
+    global xMosca4
+    global yMosca4
+
+    glPushMatrix()
+    glTranslate(xMosca4, yMosca4, 0.0)
+    if colisionandoMosca4 == False:
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.016 - 0.01, sin(angulo) * 0.016 + 0.0, 0.0)
+        glEnd()
+
+        glBegin(GL_POLYGON)
+        glColor3f(0.0, 0.1, 0.090)
+        for x in range(360):
+            angulo = x * 3.14159 / 180.0
+            glVertex3f(cos(angulo) * 0.02 + 0.01, sin(angulo) * 0.02 + 0.0, 0.0)
+        glEnd()
+
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, 0.06, 0.0)
+        glVertex3f(0.04, 0.02, 0.0)
+        glEnd()
+
+        glBegin(GL_TRIANGLES)
+        glColor3f(1.0, 1.0, 1.0)
+        glVertex3f(-0.01, 0.00, 0.0)
+        glVertex3f(0.04, -0.06, 0.0)
+        glVertex3f(0.04, -0.02, 0.0)
+        glEnd()
+        
+    else:
+        glScalef(0.7,0.7,1) #aqui va xd
+        glBegin(GL_POLYGON)
+        #if colisionando == True:
+            #glColor3f(1.0, 1.0, 1.0)
+        #else:
+            #glColor3f(0.513, 0.905, 0.180)
+
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+
+        glEnd()
+
+        #Cara
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.06, 0.0)
+        glVertex3f(-0.02, 0.06, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(-0.03, 0.05, 0.0)
+        glVertex3f(-0.02, 0.05, 0.0)
+        glVertex3f(-0.02, 0.04, 0.0)
+        glVertex3f(-0.03, 0.04, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.0, 0.0)
+        glVertex3f(0.03, 0.05, 0.0)
+        glVertex3f(0.02, 0.05, 0.0)
+        glVertex3f(0.02, 0.04, 0.0)
+        glVertex3f(0.03, 0.04, 0.0)
+        glEnd()
+
+        #Mano derecha
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.03, 0.03, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.06, 0.01, 0.0)
+        glVertex3f(0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, 0.03, 0.0)
+        glVertex3f(0.05, 0.04, 0.0)
+        glVertex3f(0.06, 0.04, 0.0)
+        glVertex3f(0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.06, 0.03, 0.0)
+        glVertex3f(0.07, 0.03, 0.0)
+        glVertex3f(0.07, 0.02, 0.0)
+        glVertex3f(0.06, 0.02, 0.0)
+        glEnd()
+
+        #Mano izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, 0.03, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.06, 0.01, 0.0)
+        glVertex3f(-0.03, 0.01, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, 0.03, 0.0)
+        glVertex3f(-0.05, 0.04, 0.0)
+        glVertex3f(-0.06, 0.04, 0.0)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.06, 0.03, 0.0)
+        glVertex3f(-0.07, 0.03, 0.0)
+        glVertex3f(-0.07, 0.02, 0.0)
+        glVertex3f(-0.06, 0.02, 0.0)
+        glEnd()
+
+        #Pierna derecha
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.03, -0.03, 0.0)
+        glVertex3f(0.05, -0.03, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.04, -0.05, 0.0)
+        glVertex3f(0.05, -0.05, 0.0)
+        glVertex3f(0.05, -0.08, 0.0)
+        glVertex3f(0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(0.05, -0.06, 0.0)
+        glVertex3f(0.06, -0.06, 0.0)
+        glVertex3f(0.06, -0.07, 0.0)
+        glVertex3f(0.05, -0.07, 0.0)
+        glEnd()
+
+        #Pierna izquierda
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.03, -0.03, 0.0)
+        glVertex3f(-0.05, -0.03, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.03, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.04, -0.05, 0.0)
+        glVertex3f(-0.05, -0.05, 0.0)
+        glVertex3f(-0.05, -0.08, 0.0)
+        glVertex3f(-0.04, -0.08, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glVertex3f(-0.05, -0.06, 0.0)
+        glVertex3f(-0.06, -0.06, 0.0)
+        glVertex3f(-0.06, -0.07, 0.0)
+        glVertex3f(-0.05, -0.07, 0.0)
+        glEnd()
+    glPopMatrix()
 
 def dibujar():
     # rutinas de dibujo
@@ -500,7 +1146,10 @@ def dibujar():
     #dibujarCarro()
     #dibujarCamion()
     #dibujarTortuga()
-    dibujarMosca()
+    dibujarMosca1()
+    dibujarMosca2()
+    dibujarMosca3()
+    dibujarMosca4()
     dibujarRana()
 
 

@@ -37,22 +37,27 @@ def checar_colisiones():
     # Y extremaIzquierdaCarrito < extremaDerechaObstaculo
     # Y extremoSuperiorCarrito > extremoInferiorObstaculo
     # Y extremoInferiorCarrito < extremoSuperiorObstaculo
+    # Cuando la rana colisione con la mosca 1 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca1 - 0.05 and xRana - 0.05 < xMosca1 + 0.05 and yRana + 0.05 > yMosca1 - 0.05 and yRana - 0.05 < yMosca1 + 0.05:
         colisionandoMosca1 = True
         xRana = 0.0
         yRana = -0.8
+    # Cuando la rana colisione con la mosca 2 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca2 - 0.05 and xRana - 0.05 < xMosca2 + 0.05 and yRana + 0.05 > yMosca2 - 0.05 and yRana - 0.05 < yMosca2 + 0.05:
         colisionandoMosca2 = True
         xRana = 0.0
         yRana = -0.8
+    # Cuando la rana colisione con la mosca 3 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca3 - 0.05 and xRana - 0.05 < xMosca3 + 0.05 and yRana + 0.05 > yMosca3 - 0.05 and yRana - 0.05 < yMosca3 + 0.05:
         colisionandoMosca3 = True
         xRana = 0.0
         yRana = -0.8
+    # Cuando la rana colisione con la mosca 4 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca4 - 0.05 and xRana - 0.05 < xMosca4 + 0.05 and yRana + 0.05 > yMosca4 - 0.05 and yRana - 0.05 < yMosca4 + 0.05:
         colisionandoMosca4 = True
         xRana = 0.0
         yRana = -0.8
+    # Cuando la rana logre conseguir todos las moscas, la aplicacion se cerrara
     if colisionandoMosca1 == True and colisionandoMosca2 == True and colisionandoMosca3 == True and colisionandoMosca4 == True:
         exit()
 
@@ -470,6 +475,7 @@ def dibujarMosca1():
 
     glPushMatrix()
     glTranslate(xMosca1, yMosca1, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
     if colisionandoMosca1 == False:
         glBegin(GL_POLYGON)
         glColor3f(0.0, 0.1, 0.090)
@@ -642,6 +648,7 @@ def dibujarMosca2():
 
     glPushMatrix()
     glTranslate(xMosca2, yMosca2, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
     if colisionandoMosca2 == False:
         glBegin(GL_POLYGON)
         glColor3f(0.0, 0.1, 0.090)
@@ -814,6 +821,7 @@ def dibujarMosca3():
 
     glPushMatrix()
     glTranslate(xMosca3, yMosca3, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
     if colisionandoMosca3 == False:
         glBegin(GL_POLYGON)
         glColor3f(0.0, 0.1, 0.090)
@@ -986,6 +994,7 @@ def dibujarMosca4():
 
     glPushMatrix()
     glTranslate(xMosca4, yMosca4, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
     if colisionandoMosca4 == False:
         glBegin(GL_POLYGON)
         glColor3f(0.0, 0.1, 0.090)

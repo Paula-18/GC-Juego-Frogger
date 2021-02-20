@@ -31,18 +31,30 @@ def checar_colisiones():
     global colisionandoMosca2
     global colisionandoMosca3
     global colisionandoMosca4
+    global xRana
+    global yRana
     # Si extremaDerechaCarrito > extremaIzquierdaObstaculo
     # Y extremaIzquierdaCarrito < extremaDerechaObstaculo
     # Y extremoSuperiorCarrito > extremoInferiorObstaculo
     # Y extremoInferiorCarrito < extremoSuperiorObstaculo
     if xRana + 0.05 > xMosca1 - 0.05 and xRana - 0.05 < xMosca1 + 0.05 and yRana + 0.05 > yMosca1 - 0.05 and yRana - 0.05 < yMosca1 + 0.05:
         colisionandoMosca1 = True
+        xRana = 0.0
+        yRana = -0.8
     if xRana + 0.05 > xMosca2 - 0.05 and xRana - 0.05 < xMosca2 + 0.05 and yRana + 0.05 > yMosca2 - 0.05 and yRana - 0.05 < yMosca2 + 0.05:
         colisionandoMosca2 = True
+        xRana = 0.0
+        yRana = -0.8
     if xRana + 0.05 > xMosca3 - 0.05 and xRana - 0.05 < xMosca3 + 0.05 and yRana + 0.05 > yMosca3 - 0.05 and yRana - 0.05 < yMosca3 + 0.05:
         colisionandoMosca3 = True
+        xRana = 0.0
+        yRana = -0.8
     if xRana + 0.05 > xMosca4 - 0.05 and xRana - 0.05 < xMosca4 + 0.05 and yRana + 0.05 > yMosca4 - 0.05 and yRana - 0.05 < yMosca4 + 0.05:
         colisionandoMosca4 = True
+        xRana = 0.0
+        yRana = -0.8
+    if colisionandoMosca1 == True and colisionandoMosca2 == True and colisionandoMosca3 == True and colisionandoMosca4 == True:
+        exit()
 
 
 

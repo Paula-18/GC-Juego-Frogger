@@ -951,6 +951,136 @@ def dibujarTronco_2():
         glVertex3f(cos(angulo) * 0.01 + 0.19, sin(angulo) * 0.02 + 0.0, 0.0)
     glEnd()
 
+def dibujarMuerteRana():
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.772, 0.925, 0.780)
+    glVertex3f(-0.03, 0.05, 0.0)
+    glVertex3f(0.03, 0.05, 0.0)
+    glVertex3f(0.03, -0.05, 0.0)
+    glVertex3f(-0.03, -0.05, 0.0)
+
+    glEnd()
+
+    #Cara
+
+    glBegin(GL_QUADS)
+    glColor3f(0.772, 0.925, 0.780)
+    glVertex3f(-0.02, 0.05, 0.0)
+    glVertex3f(0.02, 0.05, 0.0)
+    glVertex3f(0.02, 0.06, 0.0)
+    glVertex3f(-0.02, 0.06, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(1.0, 1.0, 1.0)
+    glVertex3f(-0.03, 0.05, 0.0)
+    glVertex3f(-0.02, 0.05, 0.0)
+    glVertex3f(-0.02, 0.04, 0.0)
+    glVertex3f(-0.03, 0.04, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(1.0, 1.0, 1.0)
+    glVertex3f(0.03, 0.05, 0.0)
+    glVertex3f(0.02, 0.05, 0.0)
+    glVertex3f(0.02, 0.04, 0.0)
+    glVertex3f(0.03, 0.04, 0.0)
+    glEnd()
+
+    #Mano derecha
+
+    glBegin(GL_QUADS)
+    glColor3f(0.772, 0.925, 0.780)
+    glVertex3f(0.03, 0.03, 0.0)
+    glVertex3f(0.06, 0.03, 0.0)
+    glVertex3f(0.06, 0.01, 0.0)
+    glVertex3f(0.03, 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(0.05, 0.03, 0.0)
+    glVertex3f(0.05, 0.04, 0.0)
+    glVertex3f(0.06, 0.04, 0.0)
+    glVertex3f(0.06, 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(0.06, 0.03, 0.0)
+    glVertex3f(0.07, 0.03, 0.0)
+    glVertex3f(0.07, 0.02, 0.0)
+    glVertex3f(0.06, 0.02, 0.0)
+    glEnd()
+
+    #Mano izquierda
+
+    glBegin(GL_QUADS)
+    glVertex3f(-0.03, 0.03, 0.0)
+    glVertex3f(-0.06, 0.03, 0.0)
+    glVertex3f(-0.06, 0.01, 0.0)
+    glVertex3f(-0.03, 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(-0.05, 0.03, 0.0)
+    glVertex3f(-0.05, 0.04, 0.0)
+    glVertex3f(-0.06, 0.04, 0.0)
+    glVertex3f(-0.06, 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(-0.06, 0.03, 0.0)
+    glVertex3f(-0.07, 0.03, 0.0)
+    glVertex3f(-0.07, 0.02, 0.0)
+    glVertex3f(-0.06, 0.02, 0.0)
+    glEnd()
+
+    #Pierna derecha
+
+    glBegin(GL_QUADS)
+    glVertex3f(0.03, -0.03, 0.0)
+    glVertex3f(0.05, -0.03, 0.0)
+    glVertex3f(0.05, -0.05, 0.0)
+    glVertex3f(0.03, -0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(0.04, -0.05, 0.0)
+    glVertex3f(0.05, -0.05, 0.0)
+    glVertex3f(0.05, -0.08, 0.0)
+    glVertex3f(0.04, -0.08, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(0.05, -0.06, 0.0)
+    glVertex3f(0.06, -0.06, 0.0)
+    glVertex3f(0.06, -0.07, 0.0)
+    glVertex3f(0.05, -0.07, 0.0)
+    glEnd()
+
+    #Pierna izquierda
+
+    glBegin(GL_QUADS)
+    glVertex3f(-0.03, -0.03, 0.0)
+    glVertex3f(-0.05, -0.03, 0.0)
+    glVertex3f(-0.05, -0.05, 0.0)
+    glVertex3f(-0.03, -0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(-0.04, -0.05, 0.0)
+    glVertex3f(-0.05, -0.05, 0.0)
+    glVertex3f(-0.05, -0.08, 0.0)
+    glVertex3f(-0.04, -0.08, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glVertex3f(-0.05, -0.06, 0.0)
+    glVertex3f(-0.06, -0.06, 0.0)
+    glVertex3f(-0.06, -0.07, 0.0)
+    glVertex3f(-0.05, -0.07, 0.0)
+    glEnd()
+
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
@@ -968,7 +1098,8 @@ def dibujar():
     dibujarCesped2()
     #dibujarCarro_2()
     #dibujarCamion_2()
-    dibujarTronco_2()
+    #dibujarTronco_2()
+    #dibujarMuerteRana()
     dibujarRana()
 
 def main():

@@ -469,6 +469,175 @@ def dibujarMosca():
     glVertex3f(0.04, -0.02, 0.0)
     glEnd()
 
+def dibujarNenufar():
+
+    glPushMatrix()
+    glRotatef(-44, 0, 0, 1)
+    glBegin(GL_POLYGON)
+    glColor3f(0.258, 0.6, 0.109)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.08 + 0.0, sin(angulo) * 0.05 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(44, 0, 0, 1)
+    glBegin(GL_POLYGON)
+    glColor3f(0.258, 0.6, 0.109)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.08 + 0.0, sin(angulo) * 0.05 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+    
+def dibujarRanaSkin():
+
+    #Cabeza
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.03, 0.06, 0.0)
+    glVertex3f(0.03, 0.06, 0.0)
+    glVertex3f(0.03, 0.02, 0.0)
+    glVertex3f(-0.03, 0.02, 0.0)
+    glEnd()
+    #Cuerpo
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.04, 0.02, 0.0)
+    glVertex3f(0.04, 0.02, 0.0)
+    glVertex3f(0.04, -0.06, 0.0)
+    glVertex3f(-0.04, -0.06, 0.0)
+    glEnd()
+    #Ojo1
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(0.02, 0.04, 0.0)
+    glVertex3f(0.05, 0.04, 0.0)
+    glVertex3f(0.05, 0.07, 0.0)
+    glVertex3f(0.02, 0.07, 0.0)
+    glEnd()
+    #Pupila
+    glBegin(GL_QUADS)
+    glColor3f(0.0, 0.1, 0.0)
+    glVertex3f(0.025, 0.055, 0.0)
+    glVertex3f(0.045, 0.055, 0.0)
+    glVertex3f(0.045, 0.065, 0.0)
+    glVertex3f(0.025, 0.065, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.152, 0.952, 0.776)
+    glVertex3f(0.025, 0.055, 0.0)
+    glVertex3f(0.045, 0.055, 0.0)
+    glVertex3f(0.045, 0.045, 0.0)
+    glVertex3f(0.025, 0.045, 0.0)
+    glEnd()
+
+    #Ojo2
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.02, 0.04, 0.0)
+    glVertex3f(-0.05, 0.04, 0.0)
+    glVertex3f(-0.05, 0.07, 0.0)
+    glVertex3f(-0.02, 0.07, 0.0)
+    glEnd()
+
+    #pupila2
+
+    glBegin(GL_QUADS)
+    glColor3f(0.0, 0.1, 0.0)
+    glVertex3f(-0.025, 0.055, 0.0)
+    glVertex3f(-0.045, 0.055, 0.0)
+    glVertex3f(-0.045, 0.065, 0.0)
+    glVertex3f(-0.025, 0.065, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.152, 0.952, 0.776)
+    glVertex3f(-0.025, 0.055, 0.0)
+    glVertex3f(-0.045, 0.055, 0.0)
+    glVertex3f(-0.045, 0.045, 0.0)
+    glVertex3f(-0.025, 0.045, 0.0)
+    glEnd()
+
+    #pata1
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.035, -0.06, 0.0)
+    glVertex3f(-0.02, -0.06, 0.0)
+    glVertex3f(-0.02, -0.08, 0.0)
+    glVertex3f(-0.035, -0.08, 0.0)
+    glEnd()
+
+    #pata2
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(0.035, -0.06, 0.0)
+    glVertex3f(0.02, -0.06, 0.0)
+    glVertex3f(0.02, -0.08, 0.0)
+    glVertex3f(0.035, -0.08, 0.0)
+    glEnd()
+
+    #pata3
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(0.04, 0.01, 0.0)
+    glVertex3f(0.06, 0.01, 0.0)
+    glVertex3f(0.06, -0.05, 0.0)
+    glVertex3f(0.04, -0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(0.06, -0.05, 0.0)
+    glVertex3f(0.08, -0.05, 0.0)
+    glVertex3f(0.08, -0.07, 0.0)
+    glVertex3f(0.06, -0.07, 0.0)
+    glEnd()
+
+    #pata4
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.04, 0.01, 0.0)
+    glVertex3f(-0.06, 0.01, 0.0)
+    glVertex3f(-0.06, -0.05, 0.0)
+    glVertex3f(-0.04, -0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.06, -0.05, 0.0)
+    glVertex3f(-0.08, -0.05, 0.0)
+    glVertex3f(-0.08, -0.07, 0.0)
+    glVertex3f(-0.06, -0.07, 0.0)
+    glEnd()
+
+    #Boca
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.015, 0.01, 0.0)
+    glVertex3f(0.015, 0.01, 0.0)
+    glVertex3f(0.015, 0.00, 0.0)
+    glVertex3f(-0.015, 0.00, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.015, 0.01, 0.0)
+    glVertex3f(-0.025, 0.01, 0.0)
+    glVertex3f(-0.025, 0.02, 0.0)
+    glVertex3f(-0.015, 0.02, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(0.015, 0.01, 0.0)
+    glVertex3f(0.025, 0.01, 0.0)
+    glVertex3f(0.025, 0.02, 0.0)
+    glVertex3f(0.015, 0.02, 0.0)
+    glEnd()
+
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
@@ -476,7 +645,9 @@ def dibujar():
     #dibujarCarro()
     #dibujarCamion()
     #dibujarTortuga()
-    dibujarMosca()
+    #dibujarMosca()
+    #dibujarNenufar()
+    dibujarRanaSkin()
     dibujarRana()
 
 

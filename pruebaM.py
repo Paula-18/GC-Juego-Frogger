@@ -656,6 +656,11 @@ def dibujarCarro3():
     
     glPopMatrix()
 
+def dibujarAllCarros():
+    dibujarCarro1()
+    dibujarCarro2()
+    dibujarCarro3()
+
 def dibujarCamion():
     glBegin(GL_QUADS)
     glColor3f(0.0, 0.0, 1.0)
@@ -751,6 +756,10 @@ def dibujarCamion2():
     dibujarCamion()
     
     glPopMatrix()
+
+def dibujarAllCamiones():
+    dibujarCamion1()
+    dibujarCamion2()
 
 def dibujarTortuga():
 
@@ -927,15 +936,6 @@ def dibujarMosca4():
         glScalef(0.7,0.7,1)
         dibujarRanaSkin()    
     glPopMatrix()
-
-def dibujarAllCarros():
-    dibujarCarro1()
-    dibujarCarro2()
-    dibujarCarro3()
-
-def dibujarAllCamiones():
-    dibujarCamion1()
-    dibujarCamion2()
 
 def dibujarAllMoscas():
     dibujarMosca1()

@@ -32,6 +32,12 @@ yCamion2 = -0.2
 
 xTronco1 = 1.0
 yTronco1 = 0.1
+
+xTronco2 = 1.6
+yTronco2 = 0.1
+
+xTronco3 = 2.2
+yTronco3 = 0.1
 #ubicacion de la rana al iniciar la partida
 xRana = 0.0
 yRana = -0.8
@@ -60,18 +66,15 @@ def checar_colisiones():
     # Cuando la rana colisione con la mosca 1 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca1 - 0.05 and xRana - 0.05 < xMosca1 + 0.05 and yRana + 0.05 > yMosca1 - 0.05 and yRana - 0.05 < yMosca1 + 0.05:
         colisionandoMosca1 = True
-        xRana = 0.0
-        yRana = -0.8
+        resetPosition()
     # Cuando la rana colisione con la mosca 2 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca2 - 0.05 and xRana - 0.05 < xMosca2 + 0.05 and yRana + 0.05 > yMosca2 - 0.05 and yRana - 0.05 < yMosca2 + 0.05:
         colisionandoMosca2 = True
-        xRana = 0.0
-        yRana = -0.8
+        resetPosition()
     # Cuando la rana colisione con la mosca 3 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca3 - 0.05 and xRana - 0.05 < xMosca3 + 0.05 and yRana + 0.05 > yMosca3 - 0.05 and yRana - 0.05 < yMosca3 + 0.05:
         colisionandoMosca3 = True
-        xRana = 0.0
-        yRana = -0.8
+        resetPosition()
     # Cuando la rana colisione con la mosca 4 se convertira en true y la rana regresara al punto de partida
     if xRana + 0.05 > xMosca4 - 0.05 and xRana - 0.05 < xMosca4 + 0.05 and yRana + 0.05 > yMosca4 - 0.05 and yRana - 0.05 < yMosca4 + 0.05:
         colisionandoMosca4 = True
@@ -103,6 +106,14 @@ def checar_colisiones():
     if xRana + 0.05 > xTronco1 - 0.05 and xRana - 0.05 < xTronco1 + 0.05 and yRana + 0.05 > yTronco1 - 0.05 and yRana - 0.05 < yTronco1 + 0.05:
         #colisionandoCarro = True
         resetPosition()
+    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTronco2 - 0.05 and xRana - 0.05 < xTronco2 + 0.05 and yRana + 0.05 > yTronco1 - 0.05 and yRana - 0.05 < yTronco1 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTronco3 - 0.05 and xRana - 0.05 < xTronco3 + 0.05 and yRana + 0.05 > yTronco1 - 0.05 and yRana - 0.05 < yTronco1 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
 
 def resetPosition():
     global xRana
@@ -110,7 +121,6 @@ def resetPosition():
 
     xRana = 0.0
     yRana = -0.8
-
 
 def actualizar(window):
     global angulo
@@ -125,6 +135,8 @@ def actualizar(window):
     global xCamion1
     global xCamion2
     global xTronco1
+    global xTronco2
+    global xTronco3
 
     estadoIzquierda = glfw.get_key(window, glfw.KEY_LEFT)
     estadoDerecha = glfw.get_key(window, glfw.KEY_RIGHT)
@@ -177,9 +189,19 @@ def actualizar(window):
 
     #traslado de los troncos
     if xTronco1 > -1.3:
-        xTronco1 = xTronco1 - 0.002
+        xTronco1 = xTronco1 - 0.003
     else:
         xTronco1 = 1.2
+    
+    if xTronco2 > -1.3:
+        xTronco2 = xTronco2 - 0.003
+    else:
+        xTronco2 = 1.2
+    
+    if xTronco3 > -1.3:
+        xTronco3 = xTronco3 - 0.003
+    else:
+        xTronco3 = 1.2
 
 def dibujarRana():
     global xRana
@@ -190,7 +212,7 @@ def dibujarRana():
     glPushMatrix()
     glTranslate(xRana, yRana, 0.0)
     glRotate(angulo, 0.0, 0.0, 1.0)
-    glScalef(0.2,0.2,1) #aqui va xd
+    glScalef(0.5,0.5,1) #aqui va xd
     glBegin(GL_POLYGON)
     #if colisionando == True:
         #glColor3f(1.0, 1.0, 1.0)
@@ -924,7 +946,7 @@ def dibujarAllMoscas():
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
-    #dibujarAllTronco()
+    dibujarAllTronco()
     dibujarAllCarros()
     dibujarAllCamiones()
     #dibujarTortuga()

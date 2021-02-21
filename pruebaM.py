@@ -4,16 +4,16 @@ import glfw
 from math import *
 #ubicacion de la mosca 1
 xMosca1 = -0.8
-yMosca1 = 0.6
+yMosca1 = 0.85
 #ubicacion de la mosca 2
 xMosca2 = -0.3
-yMosca2 = 0.6
+yMosca2 = 0.85
 #ubicacion de la mosca 3
 xMosca3 = 0.3
-yMosca3 = 0.6
+yMosca3 = 0.85
 #ubicacion de la mosca 4
-xMosca4 = 0.8
-yMosca4 = 0.6
+xMosca4 = 0.78
+yMosca4 = 0.85
 #ubicacion del carro 1
 xCarro1 = 1.2
 yCarro1 = -0.5
@@ -943,9 +943,96 @@ def dibujarAllMoscas():
     dibujarMosca3()
     dibujarMosca4()
 
+def dibujarCesped():
+
+    glBegin(GL_QUADS)
+    glColor3f(0.352, 0.137, 0.501)
+    glVertex3f(-1.0, -0.73, 0.0)
+    glVertex3f(1.0, -0.73, 0.0)
+    glVertex3f(1.0, -1.0, 0.0)
+    glVertex3f(-1.0, -1.0, 0.0)
+    glEnd()
+
+def dibujarCamino():
+
+    glBegin(GL_QUADS)
+    #glColor3f(0.674, 0.674, 0.674)
+    glColor3f(0.35, 0.35, 0.35)
+    glVertex3f(-1.0, -0.09, 0.0)
+    glVertex3f(1.0, -0.09, 0.0)
+    glVertex3f(1.0, -0.73, 0.0)
+    glVertex3f(-1.0, -0.73, 0.0)
+    glEnd()
+
+def dibujarCesped2():
+
+    glBegin(GL_QUADS)
+    glColor3f(0.352, 0.137, 0.501)
+    glVertex3f(-1.0, -0.09, 0.0)
+    glVertex3f(1.0, -0.09, 0.0)
+    glVertex3f(1.0, 0.04, 0.0)
+    glVertex3f(-1.0, 0.04, 0.0)
+    glEnd()
+
+def dibujarParteArriba():
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    #glColor3f(0.588, 0.427, 0.235)
+    glVertex3f(-1.0, 1.0, 0.0)
+    glVertex3f(-0.9, 1.0, 0.0)
+    glVertex3f(-0.9, 0.78, 0.0)
+    glVertex3f(-1.0, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(1.0, 1.0, 0.0)
+    glVertex3f(0.88, 1.0, 0.0)
+    glVertex3f(0.88, 0.78, 0.0)
+    glVertex3f(1.0, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(1.0, 1.0, 0.0)
+    glVertex3f(-1.0, 1.0, 0.0)
+    glVertex3f(-1.0, 0.95, 0.0)
+    glVertex3f(1.0, 0.95, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(-0.68, 1.0, 0.0)
+    glVertex3f(-0.4, 1.0, 0.0)
+    glVertex3f(-0.4, 0.78, 0.0)
+    glVertex3f(-0.68, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(0.68, 1.0, 0.0)
+    glVertex3f(0.4, 1.0, 0.0)
+    glVertex3f(0.4, 0.78, 0.0)
+    glVertex3f(0.68, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(0.19, 1.0, 0.0)
+    glVertex3f(-0.2, 1.0, 0.0)
+    glVertex3f(-0.2, 0.78, 0.0)
+    glVertex3f(0.19, 0.78, 0.0)
+    glEnd()
+
+
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
+    dibujarCamino()
+    dibujarCesped()
+    dibujarCesped2()
+    dibujarParteArriba()
     dibujarAllTronco()
     dibujarAllCarros()
     dibujarAllCamiones()

@@ -14,6 +14,9 @@ yMosca3 = 0.6
 #ubicacion de la mosca 4
 xMosca4 = 0.8
 yMosca4 = 0.6
+
+xCarro = 1.2
+yCarro = -0.5
 #ubicacion de la rana al iniciar la partida
 xRana = 0.0
 yRana = -0.8
@@ -22,6 +25,7 @@ colisionandoMosca1 = False
 colisionandoMosca2 = False
 colisionandoMosca3 = False
 colisionandoMosca4 = False
+colisionandoCarro = False
 #angulo que se necesita para girar a la rana
 angulo = 0
 
@@ -31,6 +35,7 @@ def checar_colisiones():
     global colisionandoMosca2
     global colisionandoMosca3
     global colisionandoMosca4
+    global colisionandoCarro
     global xRana
     global yRana
     # Si extremaDerechaCarrito > extremaIzquierdaObstaculo
@@ -57,6 +62,11 @@ def checar_colisiones():
         colisionandoMosca4 = True
         xRana = 0.0
         yRana = -0.8
+    # Cuando la rana colisione con la mosca 4 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xCarro - 0.05 and xRana - 0.05 < xCarro + 0.05 and yRana + 0.05 > yCarro - 0.05 and yRana - 0.05 < yCarro + 0.05:
+        colisionandoCarro = True
+        xRana = 0.0
+        yRana = -0.8
     # Cuando la rana logre conseguir todos las moscas, la aplicacion se cerrara
     if colisionandoMosca1 == True and colisionandoMosca2 == True and colisionandoMosca3 == True and colisionandoMosca4 == True:
         exit()
@@ -67,7 +77,8 @@ def actualizar(window):
     global angulo
     global xRana
     global yRana
-
+    global xCarro
+    global yCarro
 
     estadoIzquierda = glfw.get_key(window, glfw.KEY_LEFT)
     estadoDerecha = glfw.get_key(window, glfw.KEY_RIGHT)
@@ -90,6 +101,12 @@ def actualizar(window):
         yRana = yRana + 0.005
 
     checar_colisiones()
+
+    
+    if xCarro > -1.3:
+        xCarro = xCarro - 0.005
+    else:
+        xCarro = 1.2
 
 def dibujarRana():
     global xRana
@@ -281,7 +298,12 @@ def dibujarTronco():
     glEnd()
 
 def dibujarCarro():
+    global xCarro
+    global yCarro
 
+    glPushMatrix()
+    glTranslate(xCarro, yCarro, 0.0)
+    glScalef(0.5,0.5,1)
     glBegin(GL_POLYGON)
     glColor3f(1.0, 0.0, 0.0)
     glVertex3f(-0.14, 0.0, 0.0)
@@ -329,6 +351,8 @@ def dibujarCarro():
     glVertex3f(-0.085, -0.06, 0.0)
     glVertex3f(-0.125, 0.0, 0.0)
     glEnd()
+    
+    glPopMatrix()
 
 def dibujarCamion():
 
@@ -1164,7 +1188,7 @@ def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
     #dibujarTronco()
-    #dibujarCarro()
+    dibujarCarro()
     #dibujarCamion()
     #dibujarTortuga()
     dibujarMosca1()

@@ -638,6 +638,319 @@ def dibujarRanaSkin():
     glVertex3f(0.015, 0.02, 0.0)
     glEnd()
 
+def dibujarCaraRana():
+    #Cabeza
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.03, 0.06, 0.0)
+    glVertex3f(0.03, 0.06, 0.0)
+    glVertex3f(0.03, 0.0, 0.0)
+    glVertex3f(-0.03, 0.0, 0.0)
+    glEnd()
+
+    #Ojo1
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(0.02, 0.04, 0.0)
+    glVertex3f(0.05, 0.04, 0.0)
+    glVertex3f(0.05, 0.07, 0.0)
+    glVertex3f(0.02, 0.07, 0.0)
+    glEnd()
+    #Pupila
+    glBegin(GL_QUADS)
+    glColor3f(0.0, 0.1, 0.0)
+    glVertex3f(0.025, 0.055, 0.0)
+    glVertex3f(0.045, 0.055, 0.0)
+    glVertex3f(0.045, 0.065, 0.0)
+    glVertex3f(0.025, 0.065, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.152, 0.952, 0.776)
+    glVertex3f(0.025, 0.055, 0.0)
+    glVertex3f(0.045, 0.055, 0.0)
+    glVertex3f(0.045, 0.045, 0.0)
+    glVertex3f(0.025, 0.045, 0.0)
+    glEnd()
+
+    #Ojo2
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.02, 0.04, 0.0)
+    glVertex3f(-0.05, 0.04, 0.0)
+    glVertex3f(-0.05, 0.07, 0.0)
+    glVertex3f(-0.02, 0.07, 0.0)
+    glEnd()
+
+    #pupila2
+
+    glBegin(GL_QUADS)
+    glColor3f(0.0, 0.1, 0.0)
+    glVertex3f(-0.025, 0.055, 0.0)
+    glVertex3f(-0.045, 0.055, 0.0)
+    glVertex3f(-0.045, 0.065, 0.0)
+    glVertex3f(-0.025, 0.065, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.152, 0.952, 0.776)
+    glVertex3f(-0.025, 0.055, 0.0)
+    glVertex3f(-0.045, 0.055, 0.0)
+    glVertex3f(-0.045, 0.045, 0.0)
+    glVertex3f(-0.025, 0.045, 0.0)
+    glEnd()
+
+    #Boca
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.015, 0.02, 0.0)
+    glVertex3f(0.015, 0.02, 0.0)
+    glVertex3f(0.015, 0.01, 0.0)
+    glVertex3f(-0.015, 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.015, 0.02, 0.0)
+    glVertex3f(-0.025, 0.02, 0.0)
+    glVertex3f(-0.025, 0.03, 0.0)
+    glVertex3f(-0.015, 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(0.015, 0.02, 0.0)
+    glVertex3f(0.025, 0.02, 0.0)
+    glVertex3f(0.025, 0.03, 0.0)
+    glVertex3f(0.015, 0.03, 0.0)
+    glEnd()
+
+def dibujarCesped():
+
+    glBegin(GL_QUADS)
+    glColor3f(0.352, 0.137, 0.501)
+    glVertex3f(-1.0, -0.73, 0.0)
+    glVertex3f(1.0, -0.73, 0.0)
+    glVertex3f(1.0, -1.0, 0.0)
+    glVertex3f(-1.0, -1.0, 0.0)
+    glEnd()
+
+def dibujarCamino():
+
+    glBegin(GL_QUADS)
+    #glColor3f(0.674, 0.674, 0.674)
+    glColor3f(0.35, 0.35, 0.35)
+    glVertex3f(-1.0, -0.13, 0.0)
+    glVertex3f(1.0, -0.13, 0.0)
+    glVertex3f(1.0, -0.73, 0.0)
+    glVertex3f(-1.0, -0.73, 0.0)
+    glEnd()
+
+def dibujarCesped2():
+
+    glBegin(GL_QUADS)
+    glColor3f(0.352, 0.137, 0.501)
+    glVertex3f(-1.0, -0.13, 0.0)
+    glVertex3f(1.0, -0.13, 0.0)
+    glVertex3f(1.0, 0.05, 0.0)
+    glVertex3f(-1.0, 0.05, 0.0)
+    glEnd()
+
+def dibujarParteArriba():
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    #glColor3f(0.588, 0.427, 0.235)
+    glVertex3f(-1.0, 1.0, 0.0)
+    glVertex3f(-0.95, 1.0, 0.0)
+    glVertex3f(-0.95, 0.8, 0.0)
+    glVertex3f(-1.0, 0.8, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(1.0, 1.0, 0.0)
+    glVertex3f(0.95, 1.0, 0.0)
+    glVertex3f(0.95, 0.8, 0.0)
+    glVertex3f(1.0, 0.8, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(1.0, 1.0, 0.0)
+    glVertex3f(-1.0, 1.0, 0.0)
+    glVertex3f(-1.0, 0.95, 0.0)
+    glVertex3f(1.0, 0.95, 0.0)
+    glEnd()
+
+def dibujarCarro_2():
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.952, 0.976, 0.427)
+    #glVertex3f(-0.14, 0.0, 0.0)
+    glVertex3f(-0.08, 0.08, 0.0)
+    glVertex3f(0.14, 0.08, 0.0)
+    glVertex3f(0.14, -0.08, 0.0)
+    glVertex3f(-0.08, -0.08, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.06, 0.08, 0.0)
+    glVertex3f(-0.01, 0.08, 0.0)
+    glVertex3f(-0.01, 0.10, 0.0)
+    glVertex3f(-0.06, 0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.06, -0.08, 0.0)
+    glVertex3f(-0.01, -0.08, 0.0)
+    glVertex3f(-0.01, -0.10, 0.0)
+    glVertex3f(-0.06, -0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(0.05, -0.08, 0.0)
+    glVertex3f(0.12, -0.08, 0.0)
+    glVertex3f(0.12, -0.10, 0.0)
+    glVertex3f(0.05, -0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(0.05, 0.08, 0.0)
+    glVertex3f(0.12, 0.08, 0.0)
+    glVertex3f(0.12, 0.10, 0.0)
+    glVertex3f(0.05, 0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_TRIANGLES)
+    glColor3f(0.5, 0.7, 0.9)
+    glVertex3f(-0.01, 0.06, 0.0)
+    glVertex3f(-0.01, -0.06, 0.0)
+    glVertex3f(-0.07, 0.0, 0.0)
+    glEnd()
+
+def dibujarCamion_2():
+
+    glBegin(GL_QUADS)
+    glColor3f(1.0, 1.0, 1.0)
+    glVertex3f(-0.08, 0.08, 0.0)
+    glVertex3f(0.18, 0.08, 0.0)
+    glVertex3f(0.18, -0.08, 0.0)
+    glVertex3f(-0.08, -0.08, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.06, 0.08, 0.0)
+    glVertex3f(-0.01, 0.08, 0.0)
+    glVertex3f(-0.01, 0.10, 0.0)
+    glVertex3f(-0.06, 0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.06, -0.08, 0.0)
+    glVertex3f(-0.01, -0.08, 0.0)
+    glVertex3f(-0.01, -0.10, 0.0)
+    glVertex3f(-0.06, -0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(0.07+0.04, -0.08, 0.0)
+    glVertex3f(0.12+0.04, -0.08, 0.0)
+    glVertex3f(0.12+0.04, -0.10, 0.0)
+    glVertex3f(0.07+0.04, -0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(0.07+0.04, 0.08, 0.0)
+    glVertex3f(0.12+0.04, 0.08, 0.0)
+    glVertex3f(0.12+0.04, 0.10, 0.0)
+    glVertex3f(0.07+0.04, 0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.910, 0.0, 0.0)
+    glVertex3f(-0.08, 0.03, 0.0)
+    glVertex3f(-0.098, 0.03, 0.0)
+    glVertex3f(-0.098, -0.03, 0.0)
+    glVertex3f(-0.08, -0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(1.0, 1.0, 1.0)
+    glVertex3f(-0.098, 0.08, 0.0)
+    glVertex3f(-0.18, 0.08, 0.0)
+    glVertex3f(-0.18, -0.08, 0.0)
+    glVertex3f(-0.098, -0.08, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.15, 0.08, 0.0)
+    glVertex3f(-0.11, 0.08, 0.0)
+    glVertex3f(-0.11, 0.10, 0.0)
+    glVertex3f(-0.15, 0.10, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.15, -0.08, 0.0)
+    glVertex3f(-0.11, -0.08, 0.0)
+    glVertex3f(-0.11, -0.10, 0.0)
+    glVertex3f(-0.15, -0.10, 0.0)
+    glEnd()
+
+def dibujarTronco_2():
+
+    glBegin(GL_QUADS)
+    glColor3f(0.588, 0.427, 0.235)
+    glVertex3f(-0.20, 0.08, 0.0)
+    glVertex3f(0.20, 0.08, 0.0)
+    glVertex3f(0.20, -0.08, 0.0)
+    glVertex3f(-0.20, -0.08, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.07 - 0.19, sin(angulo) * 0.08 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.815, 0.615, 0.372)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.06 + 0.19, sin(angulo) * 0.08 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.588, 0.427, 0.235)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.19, sin(angulo) * 0.06 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.815, 0.615, 0.372)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.19, sin(angulo) * 0.04 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.588, 0.427, 0.235)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.01 + 0.19, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
@@ -647,9 +960,16 @@ def dibujar():
     #dibujarTortuga()
     #dibujarMosca()
     #dibujarNenufar()
-    dibujarRanaSkin()
+    #dibujarRanaSkin()
+    #dibujarCaraRana()
+    dibujarParteArriba()
+    dibujarCamino()
+    dibujarCesped()
+    dibujarCesped2()
+    #dibujarCarro_2()
+    #dibujarCamion_2()
+    dibujarTronco_2()
     dibujarRana()
-
 
 def main():
     # inicia glfw

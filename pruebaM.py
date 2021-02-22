@@ -26,7 +26,6 @@ yCarro3 = -0.65
 #ubicacion del carro 4
 xCarro4 = -1.2
 yCarro4 = -0.15
-
 #ubicacion del camion 1
 xCamion1 = 1.2
 yCamion1 = -0.3
@@ -39,16 +38,42 @@ yCamion3 = -0.5
 #ubicacion del camion 4
 xCamion4 = -2.0
 yCamion4 = -0.5
-
+#ubicacion de la priemra hilera de tortugas 
+xTortuga1 = -1.2
+yTortuga1 = 0.28
+#ubicacion de la segunda hilera de tortugas 
+xTortuga2 = -1.7
+yTortuga2 = 0.28
+#ubicacion de la teercera hilera de tortugas 
+xTortuga3 = -2.5
+yTortuga3 = 0.28
+#ubicacion de la priemra hilera de nenufares  
+xNenufar1 = -1.5
+yNenufar1 = 0.7
+#ubicacion de la segunda hilera de nenufares  
+xNenufar2 = -2.0
+yNenufar2 = 0.7
+#ubicacion de la teercera hilera de nenufares 
+xNenufar3 = -2.8
+yNenufar3 = 0.7
 #ubicacion del tronco 1
-xTronco1 = 1.0
+xTronco1 = 1.2
 yTronco1 = 0.1
 #ubicacion del tronco 2
-xTronco2 = 1.6
+xTronco2 = 1.8
 yTronco2 = 0.1
 #ubicacion del tronco 3
-xTronco3 = 2.2
+xTronco3 = 2.4
 yTronco3 = 0.1
+#ubicacion del tronco 4
+xTronco4 = 1.6
+yTronco4 = 0.44
+#ubicacion del tronco 5
+xTronco5 = 2.2
+yTronco5 = 0.44
+#ubicacion del tronco 6
+xTronco6 = 2.8
+yTronco6 = 0.44
 #ubicacion de la rana al iniciar la partida
 xRana = 0.0
 yRana = -0.8
@@ -521,10 +546,73 @@ def dibujarTronco3():
         #colisionandoCarro = True
         resetPosition()
 
+def dibujarTronco4():
+    global xTronco4
+    global yTronco4
+
+    glPushMatrix()
+    glTranslate(xTronco4, yTronco4, 0.0)
+    glScalef(0.7,0.7,1) 
+    dibujarTronco()
+    glPopMatrix()
+
+    if xTronco4 > -1.3:
+        xTronco4 = xTronco4 - 0.003
+    else:
+        xTronco4 = 1.2
+
+    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTronco4 - 0.11 and xRana - 0.05 < xTronco4 + 0.13 and yRana + 0.05 > yTronco4 - 0.05 and yRana - 0.05 < yTronco4 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarTronco5():
+    global xTronco5
+    global yTronco5
+
+    glPushMatrix()
+    glTranslate(xTronco5, yTronco5, 0.0)
+    glScalef(0.7,0.7,1) 
+    dibujarTronco()
+    glPopMatrix()
+
+    if xTronco5 > -1.3:
+        xTronco5 = xTronco5 - 0.003
+    else:
+        xTronco5 = 1.2
+
+    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTronco5 - 0.11 and xRana - 0.05 < xTronco5 + 0.13 and yRana + 0.05 > yTronco5 - 0.05 and yRana - 0.05 < yTronco5 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarTronco6():
+    global xTronco6
+    global yTronco6
+
+    glPushMatrix()
+    glTranslate(xTronco6, yTronco6, 0.0)
+    glScalef(0.7,0.7,1) 
+    dibujarTronco()
+    glPopMatrix()
+
+    if xTronco6 > -1.3:
+        xTronco6 = xTronco6 - 0.003
+    else:
+        xTronco6 = 1.2
+
+    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTronco6 - 0.11 and xRana - 0.05 < xTronco6 + 0.13 and yRana + 0.05 > yTronco6 - 0.05 and yRana - 0.05 < yTronco6 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
 def dibujarAllTronco():
     dibujarTronco1()
     dibujarTronco2()
     dibujarTronco3()
+    dibujarTronco4()
+    dibujarTronco5()
+    dibujarTronco6()
 
 def dibujarCarro():
     glBegin(GL_POLYGON)
@@ -1010,6 +1098,106 @@ def dibujarTortuga():
         glVertex3f(cos(angulo) * 0.10 - 0.15, sin(angulo) * 0.07 + 0.0, 0.0)
     glEnd()
 
+def dibujarHilera2Tortuga():
+    glPushMatrix()
+    glTranslate(0.0, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarTortuga()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.2, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarTortuga()
+    glPopMatrix()
+
+def dibujarHilera3Tortuga():
+    glPushMatrix()
+    glTranslate(0.0, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarTortuga()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.2, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarTortuga()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.4, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarTortuga()
+    glPopMatrix()
+
+def dibujarTortuga1():
+    global xTortuga1
+    global yTortuga1
+
+    glPushMatrix()
+    glTranslate(xTortuga1, yTortuga1, 0.0)
+    glRotate(180, 0.0, 0.0, 1.0)
+    glScalef(0.6,0.8,1)
+    dibujarHilera3Tortuga()
+    glPopMatrix()
+
+    if xTortuga1 < 1.3:
+        xTortuga1 = xTortuga1 + 0.004
+    else:
+        xTortuga1 = -1.2
+
+    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTortuga1 - 0.2 and xRana - 0.05 < xTortuga1 + 0.05 and yRana + 0.05 > yTortuga1 - 0.05 and yRana - 0.05 < yTortuga1 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarTortuga2():
+    global xTortuga2
+    global yTortuga2
+
+    glPushMatrix()
+    glTranslate(xTortuga2, yTortuga2, 0.0)
+    glRotate(180, 0.0, 0.0, 1.0)
+    glScalef(0.6,0.8,1)
+    dibujarHilera2Tortuga()
+    glPopMatrix()
+
+    if xTortuga2 < 1.3:
+        xTortuga2 = xTortuga2 + 0.004
+    else:
+        xTortuga2 = -1.2
+
+    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTortuga2 - 0.1 and xRana - 0.05 < xTortuga2 + 0.08 and yRana + 0.05 > yTortuga2 - 0.05 and yRana - 0.05 < yTortuga2 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarTortuga3():
+    global xTortuga3
+    global yTortuga3
+
+    glPushMatrix()
+    glTranslate(xTortuga3, yTortuga3, 0.0)
+    glRotate(180, 0.0, 0.0, 1.0)
+    glScalef(0.6,0.8,1)
+    dibujarHilera2Tortuga()
+    glPopMatrix()
+
+    if xTortuga3 < 1.3:
+        xTortuga3 = xTortuga3 + 0.004
+    else:
+        xTortuga3 = -1.2
+
+    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xTortuga3 - 0.1 and xRana - 0.05 < xTortuga3 + 0.08 and yRana + 0.05 > yTortuga3 - 0.05 and yRana - 0.05 < yTortuga3 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarAllTortuga():
+    dibujarTortuga1()
+    dibujarTortuga2()
+    dibujarTortuga3()
+
 def dibujarNenufar():
 
     glPushMatrix()
@@ -1031,6 +1219,106 @@ def dibujarNenufar():
         glVertex3f(cos(angulo) * 0.08 + 0.0, sin(angulo) * 0.05 + 0.0, 0.0)
     glEnd()
     glPopMatrix()
+
+def dibujarHilera2Nenufar():
+    glPushMatrix()
+    glTranslate(0.0, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarNenufar()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.1, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarNenufar()
+    glPopMatrix()
+
+def dibujarHilera3Nenufar():
+    glPushMatrix()
+    glTranslate(0.0, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarNenufar()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.1, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarNenufar()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.2, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarNenufar()
+    glPopMatrix()
+
+def dibujarNenufar1():
+    global xNenufar1
+    global yNenufar1
+
+    glPushMatrix()
+    glTranslate(xNenufar1, yNenufar1, 0.0)
+    glRotate(180, 0.0, 0.0, 1.0)
+    glScalef(1.0,0.8,1)
+    dibujarHilera2Nenufar()
+    glPopMatrix()
+
+    if xNenufar1 < 1.3:
+        xNenufar1 = xNenufar1 + 0.004
+    else:
+        xNenufar1 = -1.2
+
+    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xNenufar1 - 0.1 and xRana - 0.05 < xNenufar1 + 0.08 and yRana + 0.05 > yNenufar1 - 0.05 and yRana - 0.05 < yNenufar1 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarNenufar2():
+    global xNenufar2
+    global yNenufar2
+
+    glPushMatrix()
+    glTranslate(xNenufar2, yNenufar2, 0.0)
+    glRotate(180, 0.0, 0.0, 1.0)
+    glScalef(0.6,0.8,1)
+    dibujarHilera3Nenufar()
+    glPopMatrix()
+
+    if xNenufar2 < 1.3:
+        xNenufar2 = xNenufar2 + 0.004
+    else:
+        xNenufar2 = -1.2
+
+    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xNenufar2 - 0.2 and xRana - 0.05 < xNenufar2 + 0.05 and yRana + 0.05 > yNenufar2 - 0.05 and yRana - 0.05 < yNenufar2 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarNenufar3():
+    global xNenufar3
+    global yNenufar3
+
+    glPushMatrix()
+    glTranslate(xNenufar3, yNenufar3, 0.0)
+    glRotate(180, 0.0, 0.0, 1.0)
+    glScalef(1.0,0.8,1)
+    dibujarHilera2Nenufar()
+    glPopMatrix()
+
+    if xNenufar3 < 1.3:
+        xNenufar3 = xNenufar3 + 0.004
+    else:
+        xNenufar3 = -1.2
+
+    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
+    if xRana + 0.05 > xNenufar3 - 0.1 and xRana - 0.05 < xNenufar3 + 0.08 and yRana + 0.05 > yNenufar3 - 0.05 and yRana - 0.05 < yNenufar3 + 0.05:
+        #colisionandoCarro = True
+        resetPosition()
+
+def dibujarAllNenufar():
+    dibujarNenufar1()
+    dibujarNenufar2()
+    dibujarNenufar3()
 
 def dibujarMosca():
     glBegin(GL_POLYGON)
@@ -1214,16 +1502,16 @@ def dibujarParteArriba():
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
-    dibujarCamino()
-    dibujarCesped()
-    dibujarCesped2()
-    dibujarParteArriba()
-    dibujarAllTronco()
-    dibujarAllCamiones()
-    dibujarAllCarros()
-    #dibujarTortuga()
-    #dibujarNenufar()
-    dibujarAllMoscas()
+    #dibujarCamino()
+    #dibujarCesped()
+    #dibujarCesped2()
+    #dibujarParteArriba()
+    #dibujarAllTronco()
+    #dibujarAllCamiones()
+    #dibujarAllCarros()
+    #dibujarAllTortuga()
+    dibujarAllNenufar()
+    #dibujarAllMoscas()
     dibujarRana()
     #dibujarRanaSkin()
 

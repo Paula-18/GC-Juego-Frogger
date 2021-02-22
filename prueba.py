@@ -762,17 +762,17 @@ def dibujarParteArriba():
     glColor3f(0.411, 0.662, 0.090)
     #glColor3f(0.588, 0.427, 0.235)
     glVertex3f(-1.0, 1.0, 0.0)
-    glVertex3f(-0.95, 1.0, 0.0)
-    glVertex3f(-0.95, 0.8, 0.0)
-    glVertex3f(-1.0, 0.8, 0.0)
+    glVertex3f(-0.9, 1.0, 0.0)
+    glVertex3f(-0.9, 0.78, 0.0)
+    glVertex3f(-1.0, 0.78, 0.0)
     glEnd()
 
     glBegin(GL_QUADS)
     glColor3f(0.411, 0.662, 0.090)
     glVertex3f(1.0, 1.0, 0.0)
-    glVertex3f(0.95, 1.0, 0.0)
-    glVertex3f(0.95, 0.8, 0.0)
-    glVertex3f(1.0, 0.8, 0.0)
+    glVertex3f(0.88, 1.0, 0.0)
+    glVertex3f(0.88, 0.78, 0.0)
+    glVertex3f(1.0, 0.78, 0.0)
     glEnd()
 
     glBegin(GL_QUADS)
@@ -782,6 +782,31 @@ def dibujarParteArriba():
     glVertex3f(-1.0, 0.95, 0.0)
     glVertex3f(1.0, 0.95, 0.0)
     glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(-0.68, 1.0, 0.0)
+    glVertex3f(-0.4, 1.0, 0.0)
+    glVertex3f(-0.4, 0.78, 0.0)
+    glVertex3f(-0.68, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(0.68, 1.0, 0.0)
+    glVertex3f(0.4, 1.0, 0.0)
+    glVertex3f(0.4, 0.78, 0.0)
+    glVertex3f(0.68, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(0.19, 1.0, 0.0)
+    glVertex3f(-0.2, 1.0, 0.0)
+    glVertex3f(-0.2, 0.78, 0.0)
+    glVertex3f(0.19, 0.78, 0.0)
+    glEnd()
+
 
 def dibujarCarro_2():
 
@@ -1079,6 +1104,14 @@ def dibujarMuerteRana():
     glVertex3f(-0.06, -0.06, 0.0)
     glVertex3f(-0.06, -0.07, 0.0)
     glVertex3f(-0.05, -0.07, 0.0)
+    glEnd()
+
+def dibujarFlor():
+    glBegin(GL_POLYGON)
+    glColor3f(0.894, 0.376, 0.078)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.10 - 0.15, sin(angulo) * 0.07 + 0.0, 0.0)
     glEnd()
 
 def dibujar():

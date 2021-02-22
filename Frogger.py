@@ -733,7 +733,7 @@ def dibujarCarro1():
     glPopMatrix()
 
     if xCarro1 > -1.3:
-        xCarro1 = xCarro1 - 0.002
+        xCarro1 = xCarro1 - 0.007
     else:
         xCarro1 = 1.2
 
@@ -752,7 +752,7 @@ def dibujarCarro2():
     glPopMatrix()
 
     if xCarro2 > -1.3:
-        xCarro2 = xCarro2 - 0.006
+        xCarro2 = xCarro2 - 0.007
     else:
         xCarro2 = 1.2
     
@@ -771,7 +771,7 @@ def dibujarCarro3():
     glPopMatrix()
 
     if xCarro3 > -1.3:
-        xCarro3 = xCarro3 - 0.006
+        xCarro3 = xCarro3 - 0.007
     else:
         xCarro3 = 1.2
 
@@ -790,7 +790,7 @@ def dibujarCarro4():
     glPopMatrix()
 
     if xCarro4 < 1.3:
-        xCarro4 = xCarro4 + 0.014
+        xCarro4 = xCarro4 + 0.02
     else:
         xCarro4 = -1.2
 

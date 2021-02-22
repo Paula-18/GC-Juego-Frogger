@@ -76,7 +76,10 @@ xTronco6 = 2.8
 yTronco6 = 0.44
 #ubicacion de la rana al iniciar la partida
 xRana = 0.0
-yRana = -0.8
+yRana = -0.9
+vidasdeRana = 3.0
+xVidas = -0.9
+yVidas = -0.9
 #variables de colisiones de las moscas
 colisionandoMosca1 = False
 colisionandoMosca2 = False
@@ -115,13 +118,22 @@ def checar_colisiones():
     if xRana + 0.05 > xMosca4 - 0.05 and xRana - 0.05 < xMosca4 + 0.05 and yRana + 0.05 > yMosca4 - 0.05 and yRana - 0.05 < yMosca4 + 0.05:
         colisionandoMosca4 = True
         resetPosition()
+    if colisionandoMosca1 == True and colisionandoMosca2 == True and colisionandoMosca3 == True and colisionandoMosca4 == True:
+        exit()
     
 def resetPosition():
     global xRana
     global yRana
 
     xRana = 0.0
-    yRana = -0.8
+    yRana = -0.9
+
+def vidasRana():
+    global vidasdeRana
+
+    vidasdeRana = vidasdeRana - 1.0
+    if vidasdeRana < 0:
+        exit()
 
 def actualizar(window):
     global angulo
@@ -501,9 +513,8 @@ def dibujarTronco1():
     else:
         xTronco1 = 1.2
 
-    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTronco1 - 0.11 and xRana - 0.05 < xTronco1 + 0.13 and yRana + 0.05 > yTronco1 - 0.05 and yRana - 0.05 < yTronco1 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarTronco2():
@@ -521,9 +532,8 @@ def dibujarTronco2():
     else:
         xTronco2 = 1.2
 
-    # Cuando la rana colisione con el tronco 2 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTronco2 - 0.11 and xRana - 0.05 < xTronco2 + 0.13 and yRana + 0.05 > yTronco2 - 0.05 and yRana - 0.05 < yTronco2 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarTronco3():
@@ -541,9 +551,8 @@ def dibujarTronco3():
     else:
         xTronco3 = 1.2
     
-    # Cuando la rana colisione con el tronco 3 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTronco3 - 0.11 and xRana - 0.05 < xTronco3 + 0.13 and yRana + 0.05 > yTronco3 - 0.05 and yRana - 0.05 < yTronco3 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarTronco4():
@@ -563,7 +572,7 @@ def dibujarTronco4():
 
     # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTronco4 - 0.11 and xRana - 0.05 < xTronco4 + 0.13 and yRana + 0.05 > yTronco4 - 0.05 and yRana - 0.05 < yTronco4 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarTronco5():
@@ -583,7 +592,7 @@ def dibujarTronco5():
 
     # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTronco5 - 0.11 and xRana - 0.05 < xTronco5 + 0.13 and yRana + 0.05 > yTronco5 - 0.05 and yRana - 0.05 < yTronco5 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarTronco6():
@@ -601,10 +610,9 @@ def dibujarTronco6():
     else:
         xTronco6 = 1.2
 
-    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTronco6 - 0.11 and xRana - 0.05 < xTronco6 + 0.13 and yRana + 0.05 > yTronco6 - 0.05 and yRana - 0.05 < yTronco6 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarAllTronco():
     dibujarTronco1()
@@ -721,7 +729,6 @@ def dibujarCarro1():
     glTranslate(xCarro1, yCarro1, 0.0)
     glScalef(0.5,0.5,1)
     dibujarCarro()
-    
     glPopMatrix()
 
     if xCarro1 > -1.3:
@@ -729,10 +736,9 @@ def dibujarCarro1():
     else:
         xCarro1 = 1.2
 
-    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xCarro1 - 0.05 and xRana - 0.05 < xCarro1 + 0.05 and yRana + 0.05 > yCarro1 - 0.05 and yRana - 0.05 < yCarro1 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarCarro2():
     global xCarro2
@@ -742,7 +748,6 @@ def dibujarCarro2():
     glTranslate(xCarro2, yCarro2, 0.0)
     glScalef(0.5,0.5,1)
     dibujarCarro()
-    
     glPopMatrix()
 
     if xCarro2 > -1.3:
@@ -750,10 +755,9 @@ def dibujarCarro2():
     else:
         xCarro2 = 1.2
     
-    # Cuando la rana colisione con el carro 2 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xCarro2 - 0.05 and xRana - 0.05 < xCarro2 + 0.05 and yRana + 0.05 > yCarro2 - 0.05 and yRana - 0.05 < yCarro2 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarCarro3():
     global xCarro3
@@ -763,7 +767,6 @@ def dibujarCarro3():
     glTranslate(xCarro3, yCarro3, 0.0)
     glScalef(0.5,0.5,1)
     dibujarCarro()
-    
     glPopMatrix()
 
     if xCarro3 > -1.3:
@@ -771,10 +774,9 @@ def dibujarCarro3():
     else:
         xCarro3 = 1.2
 
-    # Cuando la rana colisione con el carro 3 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xCarro3 - 0.05 and xRana - 0.05 < xCarro3 + 0.05 and yRana + 0.05 > yCarro3 - 0.05 and yRana - 0.05 < yCarro3 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarCarro4():
     global xCarro4
@@ -784,7 +786,6 @@ def dibujarCarro4():
     glTranslate(xCarro4, yCarro4, 0.0)
     glScalef(0.5,0.5,1)
     dibujarCarro_2()
-    
     glPopMatrix()
 
     if xCarro4 < 1.3:
@@ -792,10 +793,9 @@ def dibujarCarro4():
     else:
         xCarro4 = -1.2
 
-    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xCarro4 - 0.05 and xRana - 0.05 < xCarro4 + 0.05 and yRana + 0.05 > yCarro4 - 0.05 and yRana - 0.05 < yCarro4 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarAllCarros():
     dibujarCarro1()
@@ -958,16 +958,16 @@ def dibujarCamion1():
     glTranslate(xCamion1, yCamion1, 0.0)
     glScalef(0.5,0.8,1)
     dibujarCamion()
-    
     glPopMatrix()
 
     if xCamion1 > -1.3:
         xCamion1 = xCamion1 - 0.002
     else:
         xCamion1 = 1.2
+
     if xRana + 0.05 > xCamion1 - 0.055 and xRana - 0.05 < xCamion1 + 0.055 and yRana + 0.05 > yCamion1 - 0.05 and yRana - 0.05 < yCamion1 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarCamion2():
     global xCamion2
@@ -977,7 +977,6 @@ def dibujarCamion2():
     glTranslate(xCamion2, yCamion2, 0.0)
     glScalef(0.5,0.8,1)
     dibujarCamion()
-    
     glPopMatrix()
 
     if xCamion2 > -1.3:
@@ -985,10 +984,9 @@ def dibujarCamion2():
     else:
         xCamion2 = 1.2
 
-    # Cuando la rana colisione con el camion 2 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xCamion2 - 0.055 and xRana - 0.05 < xCamion2 + 0.055 and yRana + 0.05 > yCamion2 - 0.05 and yRana - 0.05 < yCamion2 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarCamion3():
     global xCamion3
@@ -1006,8 +1004,8 @@ def dibujarCamion3():
     else:
         xCamion3 = -1.2
     if xRana + 0.05 > xCamion3 - 0.04 and xRana - 0.05 < xCamion3 + 0.12 and yRana + 0.05 > yCamion3 - 0.05 and yRana - 0.05 < yCamion3 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarCamion4():
     global xCamion4
@@ -1025,8 +1023,8 @@ def dibujarCamion4():
     else:
         xCamion4 = -1.2
     if xRana + 0.05 > xCamion4 - 0.04 and xRana - 0.05 < xCamion4 + 0.12 and yRana + 0.05 > yCamion4 - 0.05 and yRana - 0.05 < yCamion4 + 0.05:
-        #colisionandoCarro = True
         resetPosition()
+        vidasRana()
 
 def dibujarAllCamiones():
     dibujarCamion1()
@@ -1146,9 +1144,8 @@ def dibujarTortuga1():
     else:
         xTortuga1 = -1.2
 
-    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTortuga1 - 0.2 and xRana - 0.05 < xTortuga1 + 0.05 and yRana + 0.05 > yTortuga1 - 0.05 and yRana - 0.05 < yTortuga1 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarTortuga2():
@@ -1167,9 +1164,8 @@ def dibujarTortuga2():
     else:
         xTortuga2 = -1.2
 
-    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTortuga2 - 0.1 and xRana - 0.05 < xTortuga2 + 0.08 and yRana + 0.05 > yTortuga2 - 0.05 and yRana - 0.05 < yTortuga2 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarTortuga3():
@@ -1190,7 +1186,7 @@ def dibujarTortuga3():
 
     # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xTortuga3 - 0.1 and xRana - 0.05 < xTortuga3 + 0.08 and yRana + 0.05 > yTortuga3 - 0.05 and yRana - 0.05 < yTortuga3 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarAllTortuga():
@@ -1270,7 +1266,7 @@ def dibujarNenufar1():
 
     # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xNenufar1 - 0.1 and xRana - 0.05 < xNenufar1 + 0.08 and yRana + 0.05 > yNenufar1 - 0.05 and yRana - 0.05 < yNenufar1 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarNenufar2():
@@ -1291,7 +1287,7 @@ def dibujarNenufar2():
 
     # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xNenufar2 - 0.2 and xRana - 0.05 < xNenufar2 + 0.05 and yRana + 0.05 > yNenufar2 - 0.05 and yRana - 0.05 < yNenufar2 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarNenufar3():
@@ -1312,7 +1308,7 @@ def dibujarNenufar3():
 
     # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
     if xRana + 0.05 > xNenufar3 - 0.1 and xRana - 0.05 < xNenufar3 + 0.08 and yRana + 0.05 > yNenufar3 - 0.05 and yRana - 0.05 < yNenufar3 + 0.05:
-        #colisionandoCarro = True
+        vidasRana()
         resetPosition()
 
 def dibujarAllNenufar():
@@ -1498,20 +1494,160 @@ def dibujarParteArriba():
     glVertex3f(0.19, 0.78, 0.0)
     glEnd()
 
+def dibujarCaraRana():
+    #Cabeza
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.03, 0.06, 0.0)
+    glVertex3f(0.03, 0.06, 0.0)
+    glVertex3f(0.03, 0.0, 0.0)
+    glVertex3f(-0.03, 0.0, 0.0)
+    glEnd()
+
+    #Ojo1
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(0.02, 0.04, 0.0)
+    glVertex3f(0.05, 0.04, 0.0)
+    glVertex3f(0.05, 0.07, 0.0)
+    glVertex3f(0.02, 0.07, 0.0)
+    glEnd()
+    #Pupila
+    glBegin(GL_QUADS)
+    glColor3f(0.0, 0.1, 0.0)
+    glVertex3f(0.025, 0.055, 0.0)
+    glVertex3f(0.045, 0.055, 0.0)
+    glVertex3f(0.045, 0.065, 0.0)
+    glVertex3f(0.025, 0.065, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.152, 0.952, 0.776)
+    glVertex3f(0.025, 0.055, 0.0)
+    glVertex3f(0.045, 0.055, 0.0)
+    glVertex3f(0.045, 0.045, 0.0)
+    glVertex3f(0.025, 0.045, 0.0)
+    glEnd()
+
+    #Ojo2
+    glBegin(GL_QUADS)
+    glColor3f(0.513, 0.905, 0.180)
+    glVertex3f(-0.02, 0.04, 0.0)
+    glVertex3f(-0.05, 0.04, 0.0)
+    glVertex3f(-0.05, 0.07, 0.0)
+    glVertex3f(-0.02, 0.07, 0.0)
+    glEnd()
+
+    #pupila2
+
+    glBegin(GL_QUADS)
+    glColor3f(0.0, 0.1, 0.0)
+    glVertex3f(-0.025, 0.055, 0.0)
+    glVertex3f(-0.045, 0.055, 0.0)
+    glVertex3f(-0.045, 0.065, 0.0)
+    glVertex3f(-0.025, 0.065, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.152, 0.952, 0.776)
+    glVertex3f(-0.025, 0.055, 0.0)
+    glVertex3f(-0.045, 0.055, 0.0)
+    glVertex3f(-0.045, 0.045, 0.0)
+    glVertex3f(-0.025, 0.045, 0.0)
+    glEnd()
+
+    #Boca
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.015, 0.02, 0.0)
+    glVertex3f(0.015, 0.02, 0.0)
+    glVertex3f(0.015, 0.01, 0.0)
+    glVertex3f(-0.015, 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(-0.015, 0.02, 0.0)
+    glVertex3f(-0.025, 0.02, 0.0)
+    glVertex3f(-0.025, 0.03, 0.0)
+    glVertex3f(-0.015, 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.1, 0.0, 0.0)
+    glVertex3f(0.015, 0.02, 0.0)
+    glVertex3f(0.025, 0.02, 0.0)
+    glVertex3f(0.025, 0.03, 0.0)
+    glVertex3f(0.015, 0.03, 0.0)
+    glEnd()
+
+def dibujarHilera2Vidas():
+    glPushMatrix()
+    glTranslate(0.0, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarCaraRana()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.1, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarCaraRana()
+    glPopMatrix()
+
+def dibujarHilera3Vidas():
+    glPushMatrix()
+    glTranslate(0.0, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarCaraRana()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.1, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarCaraRana()
+    glPopMatrix()
+
+    glPushMatrix()
+    glTranslate(0.2, 0.0, 0.0)
+    glScalef(0.6,0.8,1)
+    dibujarCaraRana()
+    glPopMatrix()
+
+def dibujarVidas():
+    global vidasdeRana
+    global xVidas
+    global yVidas
+
+    glPushMatrix()
+    glTranslate(xVidas, yVidas, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
+    if vidasdeRana == 3:
+        dibujarHilera3Vidas()
+    elif vidasdeRana == 2:
+        dibujarHilera2Vidas()
+    elif vidasdeRana == 1:
+        glPushMatrix()
+        glTranslate(0.0, 0.0, 0.0)
+        glScalef(0.6,0.8,1)
+        dibujarCaraRana()
+        glPopMatrix()
+
+    glPopMatrix()
 
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
-    dibujarCamino()
-    dibujarCesped()
-    dibujarCesped2()
-    dibujarParteArriba()
-    dibujarAllTronco()
-    dibujarAllCamiones()
+    #dibujarCamino()
+    #dibujarCesped()
+    #dibujarCesped2()
+    #dibujarParteArriba()
+    #dibujarAllTronco()
+    #dibujarAllCamiones()
     dibujarAllCarros()
-    dibujarAllTortuga()
-    dibujarAllNenufar()
+    #dibujarAllTortuga()
+    #dibujarAllNenufar()
     dibujarAllMoscas()
+    dibujarVidas()
     dibujarRana()
     #dibujarRanaSkin()
 

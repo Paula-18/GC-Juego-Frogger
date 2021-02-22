@@ -1261,7 +1261,7 @@ def dibujarNenufar1():
     glPopMatrix()
 
     if xNenufar1 < 1.3:
-        xNenufar1 = xNenufar1 + 0.004
+        xNenufar1 = xNenufar1 + 0.006
     else:
         xNenufar1 = -1.2
 
@@ -1282,7 +1282,7 @@ def dibujarNenufar2():
     glPopMatrix()
 
     if xNenufar2 < 1.3:
-        xNenufar2 = xNenufar2 + 0.004
+        xNenufar2 = xNenufar2 + 0.006
     else:
         xNenufar2 = -1.2
 
@@ -1303,7 +1303,7 @@ def dibujarNenufar3():
     glPopMatrix()
 
     if xNenufar3 < 1.3:
-        xNenufar3 = xNenufar3 + 0.004
+        xNenufar3 = xNenufar3 + 0.006
     else:
         xNenufar3 = -1.2
 

@@ -1196,14 +1196,14 @@ def dibujarFlor2():
     glTranslatef(0.542, 0.885, 0.0)
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
     glEnd()
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 - 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1212,7 +1212,7 @@ def dibujarFlor2():
     glPushMatrix()
     glRotatef(45,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1222,7 +1222,7 @@ def dibujarFlor2():
     glPushMatrix()
     glRotatef(-45,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1232,7 +1232,7 @@ def dibujarFlor2():
     glPushMatrix()
     glRotatef(135,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1242,7 +1242,7 @@ def dibujarFlor2():
     glPushMatrix()
     glRotatef(-135,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1250,14 +1250,14 @@ def dibujarFlor2():
     glPopMatrix()
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 + 0.066, 0.0)
     glEnd()
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(0.423, 0.984, 0.964)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 - 0.06, 0.0)
@@ -1280,14 +1280,14 @@ def dibujarFlor3():
     glTranslatef(-0.54, 0.885, 0.0)
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
     glEnd()
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 - 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1296,7 +1296,7 @@ def dibujarFlor3():
     glPushMatrix()
     glRotatef(45,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1306,7 +1306,7 @@ def dibujarFlor3():
     glPushMatrix()
     glRotatef(-45,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1316,7 +1316,7 @@ def dibujarFlor3():
     glPushMatrix()
     glRotatef(135,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1326,7 +1326,7 @@ def dibujarFlor3():
     glPushMatrix()
     glRotatef(-135,0,0,1)
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
@@ -1334,14 +1334,14 @@ def dibujarFlor3():
     glPopMatrix()
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 + 0.066, 0.0)
     glEnd()
 
     glBegin(GL_POLYGON)
-    glColor3f(1.0, 0.741, 0.988)
+    glColor3f(1.0, 0.823, 0.423)
     for x in range(360):
         angulo = x * 3.14159 / 180.0
         glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 - 0.06, 0.0)

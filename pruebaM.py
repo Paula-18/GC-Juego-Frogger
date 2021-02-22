@@ -172,7 +172,7 @@ def dibujarRana():
     glPushMatrix()
     glTranslate(xRana, yRana, 0.0)
     glRotate(angulo, 0.0, 0.0, 1.0)
-    glScalef(0.5,0.5,1) #aqui va xd
+    glScalef(0.7,0.7,1) #aqui va xd
     glBegin(GL_POLYGON)
     #if colisionando == True:
         #glColor3f(1.0, 1.0, 1.0)

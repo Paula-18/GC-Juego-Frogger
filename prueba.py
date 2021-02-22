@@ -34,15 +34,15 @@ def actualizar(window):
     estadoArriba = glfw.get_key(window, glfw.KEY_UP)
 
     if estadoIzquierda == glfw.PRESS and xCarrito - 0.05 > -1:
-        xCarrito = xCarrito - 0.001
+        xCarrito = xCarrito - 0.005
     if estadoDerecha == glfw.PRESS and xCarrito + 0.05 < 1:
-        xCarrito = xCarrito + 0.001
+        xCarrito = xCarrito + 0.005
     if estadoAbajo == glfw.PRESS and yCarrito - 0.05 - 0.001 > -1:
-        yCarrito = yCarrito - 0.001
+        yCarrito = yCarrito - 0.005
     # Para arriba hay que considerar que el viewport también
     # toma en cuenta la barra de titulo
     if estadoArriba == glfw.PRESS and yCarrito + 0.05 < 1:
-        yCarrito = yCarrito + 0.001
+        yCarrito = yCarrito + 0.005
 
     checar_colisiones()
 
@@ -749,7 +749,7 @@ def dibujarCamino():
 def dibujarCesped2():
 
     glBegin(GL_QUADS)
-    glColor3f(0.352, 0.137, 0.501)
+    glColor3f(0.658, 0.549, 0.341)
     glVertex3f(-1.0, -0.13, 0.0)
     glVertex3f(1.0, -0.13, 0.0)
     glVertex3f(1.0, 0.05, 0.0)
@@ -762,17 +762,17 @@ def dibujarParteArriba():
     glColor3f(0.411, 0.662, 0.090)
     #glColor3f(0.588, 0.427, 0.235)
     glVertex3f(-1.0, 1.0, 0.0)
-    glVertex3f(-0.95, 1.0, 0.0)
-    glVertex3f(-0.95, 0.8, 0.0)
-    glVertex3f(-1.0, 0.8, 0.0)
+    glVertex3f(-0.9, 1.0, 0.0)
+    glVertex3f(-0.9, 0.78, 0.0)
+    glVertex3f(-1.0, 0.78, 0.0)
     glEnd()
 
     glBegin(GL_QUADS)
     glColor3f(0.411, 0.662, 0.090)
     glVertex3f(1.0, 1.0, 0.0)
-    glVertex3f(0.95, 1.0, 0.0)
-    glVertex3f(0.95, 0.8, 0.0)
-    glVertex3f(1.0, 0.8, 0.0)
+    glVertex3f(0.88, 1.0, 0.0)
+    glVertex3f(0.88, 0.78, 0.0)
+    glVertex3f(1.0, 0.78, 0.0)
     glEnd()
 
     glBegin(GL_QUADS)
@@ -781,6 +781,30 @@ def dibujarParteArriba():
     glVertex3f(-1.0, 1.0, 0.0)
     glVertex3f(-1.0, 0.95, 0.0)
     glVertex3f(1.0, 0.95, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(-0.68, 1.0, 0.0)
+    glVertex3f(-0.4, 1.0, 0.0)
+    glVertex3f(-0.4, 0.78, 0.0)
+    glVertex3f(-0.68, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(0.68, 1.0, 0.0)
+    glVertex3f(0.4, 1.0, 0.0)
+    glVertex3f(0.4, 0.78, 0.0)
+    glVertex3f(0.68, 0.78, 0.0)
+    glEnd()
+
+    glBegin(GL_QUADS)
+    glColor3f(0.411, 0.662, 0.090)
+    glVertex3f(0.19, 1.0, 0.0)
+    glVertex3f(-0.2, 1.0, 0.0)
+    glVertex3f(-0.2, 0.78, 0.0)
+    glVertex3f(0.19, 0.78, 0.0)
     glEnd()
 
 def dibujarCarro_2():
@@ -1081,6 +1105,730 @@ def dibujarMuerteRana():
     glVertex3f(-0.05, -0.07, 0.0)
     glEnd()
 
+def dibujarFlor():
+
+    glPushMatrix()
+
+    glTranslatef(0.0, 0.885, 0.0)
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 - 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
+    glPushMatrix()
+    glRotatef(45,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(-45,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(135,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(-135,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 + 0.066, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.741, 0.988)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 - 0.06, 0.0)
+    glEnd()
+
+    #centro
+    glBegin(GL_POLYGON)
+    glColor3f(0.96, 0.96, 0.094)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.025 + 0.0, sin(angulo) * 0.025 + 0.0, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+def dibujarFlor2():
+
+    glPushMatrix()
+
+    glTranslatef(0.542, 0.885, 0.0)
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 - 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
+    glPushMatrix()
+    glRotatef(45,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(-45,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(135,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(-135,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 + 0.066, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.423, 0.984, 0.964)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 - 0.06, 0.0)
+    glEnd()
+
+    #centro
+    glBegin(GL_POLYGON)
+    glColor3f(0.96, 0.96, 0.094)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.025 + 0.0, sin(angulo) * 0.025 + 0.0, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+def dibujarFlor3():
+
+    glPushMatrix()
+
+    glTranslatef(-0.54, 0.885, 0.0)
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 - 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
+    glPushMatrix()
+    glRotatef(45,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(-45,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(135,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glPushMatrix()
+    glRotatef(-135,0,0,1)
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.04 + 0.065, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+    glPopMatrix()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 + 0.066, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(1.0, 0.823, 0.423)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.0, sin(angulo) * 0.04 - 0.06, 0.0)
+    glEnd()
+
+    #centro
+    glBegin(GL_POLYGON)
+    glColor3f(0.96, 0.96, 0.094)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.025 + 0.0, sin(angulo) * 0.025 + 0.0, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+def dibujarRocas():
+    
+    glBegin(GL_POLYGON)
+    glColor3f(0.509, 0.368, 0.105)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0, sin(angulo) * 0.010 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0, sin(angulo) * 0.010 + 0.0, 0.0)
+    glEnd()
+
+    #AA
+
+    glPushMatrix()
+    glTranslatef(0.4, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+    #AAA
+
+    glPushMatrix()
+    glTranslatef(-0.4, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+    #AAA
+
+    glPushMatrix()
+    glTranslatef(0.9, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+    #AAA
+
+    glPushMatrix()
+    glTranslatef(-0.8, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+def dibujarRocas2():
+    
+    glPushMatrix()
+    glTranslatef(0,-0.9,0)
+    glRotate(180,0,0,1)
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.517, 0.313, 0.505)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0, sin(angulo) * 0.010 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0, sin(angulo) * 0.010 + 0.0, 0.0)
+    glEnd()
+
+    #AA
+
+    glPushMatrix()
+    glTranslatef(0.4, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+    #AAA
+
+    glPushMatrix()
+    glTranslatef(-0.4, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+    #AAA
+
+    glPushMatrix()
+    glTranslatef(0.9, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+    #AAA
+
+    glPushMatrix()
+    glTranslatef(-0.8, 0, 0)
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08, sin(angulo) * 0.010 + 0.03, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.08, sin(angulo) * 0.010 + 0.0-0.05, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.05, sin(angulo) * 0.010 + 0.03 -0.12, 0.0)
+    glEnd()
+
+    #
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 + 0.08, sin(angulo) * 0.010 + 0.01, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.0 +0.04, sin(angulo) * 0.010 + 0.0-0.09, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.015 - 0.08 -0.13, sin(angulo) * 0.010 + 0.03 -0.07, 0.0)
+    glEnd()
+
+    glPopMatrix()
+
+    glPopMatrix()
+
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
@@ -1100,6 +1848,11 @@ def dibujar():
     #dibujarCamion_2()
     #dibujarTronco_2()
     #dibujarMuerteRana()
+    dibujarFlor()
+    dibujarFlor2()
+    dibujarFlor3()
+    dibujarRocas()
+    dibujarRocas2()
     dibujarRana()
 
 def main():

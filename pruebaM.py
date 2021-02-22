@@ -1436,7 +1436,7 @@ def dibujarCamino():
 def dibujarCesped2():
 
     glBegin(GL_QUADS)
-    glColor3f(0.352, 0.137, 0.501)
+    glColor3f(0.658, 0.549, 0.341)
     glVertex3f(-1.0, -0.09, 0.0)
     glVertex3f(1.0, -0.09, 0.0)
     glVertex3f(1.0, 0.04, 0.0)

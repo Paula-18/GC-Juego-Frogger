@@ -510,7 +510,7 @@ def dibujarTronco1():
     glPopMatrix()
 
     if xTronco1 > -1.3:
-        xTronco1 = xTronco1 - 0.003
+        xTronco1 = xTronco1 - 0.004
     else:
         xTronco1 = 1.2
 
@@ -529,7 +529,7 @@ def dibujarTronco2():
     glPopMatrix()
 
     if xTronco2 > -1.3:
-        xTronco2 = xTronco2 - 0.003
+        xTronco2 = xTronco2 - 0.004
     else:
         xTronco2 = 1.2
 
@@ -548,7 +548,7 @@ def dibujarTronco3():
     glPopMatrix()
 
     if xTronco3 > -1.3:
-        xTronco3 = xTronco3 - 0.003
+        xTronco3 = xTronco3 - 0.004
     else:
         xTronco3 = 1.2
     
@@ -567,7 +567,7 @@ def dibujarTronco4():
     glPopMatrix()
 
     if xTronco4 > -1.3:
-        xTronco4 = xTronco4 - 0.003
+        xTronco4 = xTronco4 - 0.004
     else:
         xTronco4 = 1.2
 
@@ -587,7 +587,7 @@ def dibujarTronco5():
     glPopMatrix()
 
     if xTronco5 > -1.3:
-        xTronco5 = xTronco5 - 0.003
+        xTronco5 = xTronco5 - 0.004
     else:
         xTronco5 = 1.2
 
@@ -607,7 +607,7 @@ def dibujarTronco6():
     glPopMatrix()
 
     if xTronco6 > -1.3:
-        xTronco6 = xTronco6 - 0.003
+        xTronco6 = xTronco6 - 0.004
     else:
         xTronco6 = 1.2
 
@@ -733,7 +733,7 @@ def dibujarCarro1():
     glPopMatrix()
 
     if xCarro1 > -1.3:
-        xCarro1 = xCarro1 - 0.004
+        xCarro1 = xCarro1 - 0.002
     else:
         xCarro1 = 1.2
 
@@ -752,7 +752,7 @@ def dibujarCarro2():
     glPopMatrix()
 
     if xCarro2 > -1.3:
-        xCarro2 = xCarro2 - 0.004
+        xCarro2 = xCarro2 - 0.006
     else:
         xCarro2 = 1.2
     
@@ -771,7 +771,7 @@ def dibujarCarro3():
     glPopMatrix()
 
     if xCarro3 > -1.3:
-        xCarro3 = xCarro3 - 0.004
+        xCarro3 = xCarro3 - 0.006
     else:
         xCarro3 = 1.2
 
@@ -790,7 +790,7 @@ def dibujarCarro4():
     glPopMatrix()
 
     if xCarro4 < 1.3:
-        xCarro4 = xCarro4 + 0.01
+        xCarro4 = xCarro4 + 0.014
     else:
         xCarro4 = -1.2
 
@@ -962,7 +962,7 @@ def dibujarCamion1():
     glPopMatrix()
 
     if xCamion1 > -1.3:
-        xCamion1 = xCamion1 - 0.002
+        xCamion1 = xCamion1 - 0.003
     else:
         xCamion1 = 1.2
 
@@ -981,7 +981,7 @@ def dibujarCamion2():
     glPopMatrix()
 
     if xCamion2 > -1.3:
-        xCamion2 = xCamion2 - 0.002
+        xCamion2 = xCamion2 - 0.003
     else:
         xCamion2 = 1.2
 
@@ -1001,7 +1001,7 @@ def dibujarCamion3():
     glPopMatrix()
 
     if xCamion3 < 1.3:
-        xCamion3 = xCamion3 + 0.002
+        xCamion3 = xCamion3 + 0.003
     else:
         xCamion3 = -1.2
     if xRana + 0.05 > xCamion3 - 0.04 and xRana - 0.05 < xCamion3 + 0.12 and yRana + 0.05 > yCamion3 - 0.05 and yRana - 0.05 < yCamion3 + 0.05:
@@ -1020,7 +1020,7 @@ def dibujarCamion4():
     glPopMatrix()
 
     if xCamion4 < 1.3:
-        xCamion4 = xCamion4 + 0.002
+        xCamion4 = xCamion4 + 0.003
     else:
         xCamion4 = -1.2
     if xRana + 0.05 > xCamion4 - 0.04 and xRana - 0.05 < xCamion4 + 0.12 and yRana + 0.05 > yCamion4 - 0.05 and yRana - 0.05 < yCamion4 + 0.05:
@@ -1141,7 +1141,7 @@ def dibujarTortuga1():
     glPopMatrix()
 
     if xTortuga1 < 1.3:
-        xTortuga1 = xTortuga1 + 0.004
+        xTortuga1 = xTortuga1 + 0.005
     else:
         xTortuga1 = -1.2
 
@@ -1161,7 +1161,7 @@ def dibujarTortuga2():
     glPopMatrix()
 
     if xTortuga2 < 1.3:
-        xTortuga2 = xTortuga2 + 0.004
+        xTortuga2 = xTortuga2 + 0.005
     else:
         xTortuga2 = -1.2
 
@@ -1181,7 +1181,7 @@ def dibujarTortuga3():
     glPopMatrix()
 
     if xTortuga3 < 1.3:
-        xTortuga3 = xTortuga3 + 0.004
+        xTortuga3 = xTortuga3 + 0.005
     else:
         xTortuga3 = -1.2
 
@@ -1261,7 +1261,7 @@ def dibujarNenufar1():
     glPopMatrix()
 
     if xNenufar1 < 1.3:
-        xNenufar1 = xNenufar1 + 0.006
+        xNenufar1 = xNenufar1 + 0.008
     else:
         xNenufar1 = -1.2
 
@@ -1282,7 +1282,7 @@ def dibujarNenufar2():
     glPopMatrix()
 
     if xNenufar2 < 1.3:
-        xNenufar2 = xNenufar2 + 0.006
+        xNenufar2 = xNenufar2 + 0.008
     else:
         xNenufar2 = -1.2
 
@@ -1303,7 +1303,7 @@ def dibujarNenufar3():
     glPopMatrix()
 
     if xNenufar3 < 1.3:
-        xNenufar3 = xNenufar3 + 0.006
+        xNenufar3 = xNenufar3 + 0.008
     else:
         xNenufar3 = -1.2
 

@@ -67,13 +67,13 @@ xTronco3 = 2.4
 yTronco3 = 0.1
 #ubicacion del tronco 4
 xTronco4 = 1.6
-yTronco4 = 0.44
+yTronco4 = 0.5
 #ubicacion del tronco 5
 xTronco5 = 2.2
-yTronco5 = 0.44
+yTronco5 = 0.5
 #ubicacion del tronco 6
 xTronco6 = 2.8
-yTronco6 = 0.44
+yTronco6 = 0.5
 #ubicacion de la rana al iniciar la partida
 xRana = 0.0
 yRana = -0.9
@@ -88,6 +88,7 @@ colisionandoMosca4 = False
 colisionandoCarro = False
 #angulo que se necesita para girar a la rana
 angulo = 0
+tiempo_anterior = 0.0
 
 
 def checar_colisiones():
@@ -147,18 +148,18 @@ def actualizar(window):
 
     if estadoIzquierda == glfw.PRESS and xRana - 0.05 > -1:
         angulo = 90
-        xRana = xRana - 0.005
+        xRana = xRana - 0.007
     if estadoDerecha == glfw.PRESS and xRana + 0.05 < 1:
         angulo = 270
-        xRana = xRana + 0.005
+        xRana = xRana + 0.007
     if estadoAbajo == glfw.PRESS and yRana - 0.05 - 0.001 > -1:
         angulo = 180
-        yRana = yRana - 0.005
+        yRana = yRana - 0.007
     # Para arriba hay que considerar que el viewport también
     # toma en cuenta la barra de titulo
     if estadoArriba == glfw.PRESS and yRana + 0.05 + 0.1 < 1:
         angulo = 0
-        yRana = yRana + 0.005
+        yRana = yRana + 0.007
 
     checar_colisiones()
 
@@ -561,7 +562,7 @@ def dibujarTronco4():
 
     glPushMatrix()
     glTranslate(xTronco4, yTronco4, 0.0)
-    glScalef(0.7,0.7,1) 
+    glScalef(0.7,1.1,1) 
     dibujarTronco()
     glPopMatrix()
 
@@ -581,7 +582,7 @@ def dibujarTronco5():
 
     glPushMatrix()
     glTranslate(xTronco5, yTronco5, 0.0)
-    glScalef(0.7,0.7,1) 
+    glScalef(0.7,1.1,1) 
     dibujarTronco()
     glPopMatrix()
 
@@ -601,7 +602,7 @@ def dibujarTronco6():
 
     glPushMatrix()
     glTranslate(xTronco6, yTronco6, 0.0)
-    glScalef(0.7,0.7,1) 
+    glScalef(0.7,1.1,1) 
     dibujarTronco()
     glPopMatrix()
 
@@ -1886,6 +1887,24 @@ def dibujarFlor3():
 
     glPopMatrix()
 
+def dibujarAllFlor():
+    tiempo_actual = glfw.get_time()
+
+    if tiempo_actual < 30:
+        dibujarFlor()
+    elif tiempo_actual < 40:
+        dibujarFlor2()
+    elif tiempo_actual < 50:
+        dibujarFlor3()
+
+def dibujarFloresRocas():
+    tiempo_actual = glfw.get_time()
+
+    if tiempo_actual < 20:
+        dibujarAllRocas()
+    elif tiempo_actual < 50:
+        dibujarAllFlor()
+
 def dibujarRocas():
     
     glBegin(GL_POLYGON)
@@ -2358,6 +2377,14 @@ def dibujarRocas2():
 
     glPopMatrix()
 
+def dibujarAllRocas():
+    tiempo_actual = glfw.get_time()
+
+    if tiempo_actual < 10:
+        dibujarRocas2()
+    elif tiempo_actual < 20:
+        dibujarRocas()
+
 def dibujar():
     # rutinas de dibujo
     #dibujarObstaculo()
@@ -2365,17 +2392,13 @@ def dibujar():
     dibujarCesped()
     dibujarCesped2()
     dibujarParteArriba()
-    #dibujarAllTronco()
-    #dibujarAllCamiones()
-    #dibujarAllCarros()
-    #dibujarAllTortuga()
-    #dibujarAllNenufar()
-    #dibujarAllMoscas()
-    dibujarFlor()
-    dibujarFlor2()
-    dibujarFlor3()
-    dibujarRocas()
-    dibujarRocas2()
+    dibujarAllTronco()
+    dibujarAllCamiones()
+    dibujarAllCarros()
+    dibujarAllTortuga()
+    dibujarAllNenufar()
+    dibujarAllMoscas()
+    dibujarFloresRocas()
     dibujarVidas()
     dibujarRana()
     #dibujarRanaSkin()

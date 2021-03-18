@@ -1,3 +1,4 @@
+from OpenGL.GL import *
 from glew_wish import *
 import glfw
 from math import *
@@ -118,7 +119,7 @@ class Carro():
         glVertex3f(0.12, 0.0, 0.0)
         glEnd()
 
-    def dibujar_1(self):
+    def dibujar_1(self,rana):
 
         glPushMatrix()
         glTranslate(self.posicionX, self.posicionY, 0.0)
@@ -135,7 +136,7 @@ class Carro():
             rana.resetPosition()
             rana.vidas()
 
-    def dibujar_2(self):
+    def dibujar_2(self, rana):
 
         glPushMatrix()
         glTranslate(self.posicionX, self.posicionY, 0.0)

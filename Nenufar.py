@@ -8,8 +8,11 @@ class Nenufar():
     posicionX = 0.0
     posicionY = 0.0
 
-    def dibujarNenufar():
+    def __init__(self, x, y):
+        self.posicionX = x
+        self.posicionY = y
 
+    def dibujarNenufar():
         glPushMatrix()
         glRotatef(-44, 0, 0, 1)
         glBegin(GL_POLYGON)

@@ -21,7 +21,11 @@ class Carro():
         self.posicionX = x
         self.posicionY = y
     
-    def dibujar1():
+    def dibujar_1(self,rana):
+
+        glPushMatrix()
+        glTranslate(self.posicionX, self.posicionY, 0.0)
+        glScalef(0.5,0.5,1)
         glBegin(GL_POLYGON)
         glColor3f(1.0, 0.0, 0.0)
         glVertex3f(-0.14, 0.0, 0.0)
@@ -69,9 +73,22 @@ class Carro():
         glVertex3f(-0.085, -0.06, 0.0)
         glVertex3f(-0.125, 0.0, 0.0)
         glEnd()
+        glPopMatrix()
 
-    def dibujar2():
+        if self.posicionX > -1.3:
+            self.posicionX = self.posicionX - 0.01
+        else:
+            self.posicionX = 1.2
 
+        if rana.posicionX + 0.05 > self.posicionX - 0.05 and rana.posicionX - 0.05 < self.posicionX + 0.05 and rana.posicionY + 0.05 > self.posicionY - 0.05 and rana.posicionY - 0.05 < self.posicionY + 0.05:
+            rana.resetPosition()
+            rana.vidas()
+
+    def dibujar_2(self, rana):
+
+        glPushMatrix()
+        glTranslate(self.posicionX, self.posicionY, 0.0)
+        glScalef(0.5,0.5,1)
         glBegin(GL_POLYGON)
         glColor3f(0.952, 0.976, 0.427)
         glVertex3f(-0.08, 0.08, 0.0)
@@ -118,30 +135,6 @@ class Carro():
         glVertex3f(0.07, -0.06, 0.0)
         glVertex3f(0.12, 0.0, 0.0)
         glEnd()
-
-    def dibujar_1(self,rana):
-
-        glPushMatrix()
-        glTranslate(self.posicionX, self.posicionY, 0.0)
-        glScalef(0.5,0.5,1)
-        self.dibujar_1()
-        glPopMatrix()
-
-        if self.posicionX > -1.3:
-            self.posicionX = self.posicionX - 0.01
-        else:
-            self.posicionX = 1.2
-
-        if rana.posicionX + 0.05 > self.posicionX - 0.05 and rana.posicionX - 0.05 < self.posicionX + 0.05 and rana.posicionY + 0.05 > self.posicionY - 0.05 and rana.posicionY - 0.05 < self.posicionY + 0.05:
-            rana.resetPosition()
-            rana.vidas()
-
-    def dibujar_2(self, rana):
-
-        glPushMatrix()
-        glTranslate(self.posicionX, self.posicionY, 0.0)
-        glScalef(0.5,0.5,1)
-        self.dibujar2()
         glPopMatrix()
 
         if self.posicionX > -1.3:

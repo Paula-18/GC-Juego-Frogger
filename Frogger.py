@@ -67,7 +67,7 @@ mosca3 = Mosca(0.3, 0.85)
 mosca4 = Mosca(0.78, 0.85)
 #dibujar a los carros
 carro1 = Carro(1.2,-0.65)
-carro1 = Carro(1.7,-0.65)
+carro2 = Carro(1.7,-0.65)
 carro3 = Carro(2.4,-0.65)
 carro4 = Carro(-1.2,-0.15)
 
@@ -679,7 +679,6 @@ def dibujarAllTortuga():
     dibujarTortuga3()
 
 def dibujarAllNenufar():
-
     global nenufar1
     global nenufar2
     global nenufar3
@@ -1682,11 +1681,11 @@ def dibujar():
     #dibujarCesped()
     #dibujarCesped2()
     #dibujarParteArriba()
-    dibujarAllTronco()
+    #dibujarAllTronco()
     #dibujarAllCamiones()
-    #dibujarAllCarros()
+    dibujarAllCarros()
     #dibujarAllTortuga()
-    dibujarAllNenufar()
+    #dibujarAllNenufar()
     #dibujarAllMoscas()
     #dibujarFloresRocas()
     #dibujarVidas()

@@ -137,10 +137,10 @@ class Carro():
         glEnd()
         glPopMatrix()
 
-        if self.posicionX > -1.3:
-            self.posicionX = self.posicionX - 0.01
+        if self.posicionX < 1.3:
+            self.posicionX = self.posicionX + 0.03
         else:
-            self.posicionX = 1.2
+            self.posicionX = -1.2
         
         if rana.posicionX + 0.05 > self.posicionX - 0.05 and rana.posicionX - 0.05 < self.posicionX + 0.05 and rana.posicionY + 0.05 > self.posicionY - 0.05 and rana.posicionY - 0.05 < self.posicionY + 0.05:
             rana.resetPosition()

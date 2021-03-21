@@ -5,54 +5,43 @@ from math import *
 from Rana import *
 from Tronco import *
 from Carro import *
-from Mosca import *
 from Nenufar import *
+from Camion import * 
+from Tortuga import *
 
-#ubicacion del camion 1
-xCamion1 = 1.2
-yCamion1 = -0.3
-#ubicacion del camion 2
-xCamion2 = 2.0
-yCamion2 = -0.3
-#ubicacion del camion 3
-xCamion3 = -1.2
-yCamion3 = -0.5
-#ubicacion del camion 4
-xCamion4 = -2.0
-yCamion4 = -0.5
-#ubicacion de la priemra hilera de tortugas 
-xTortuga1 = -1.2
-yTortuga1 = 0.28
-#ubicacion de la segunda hilera de tortugas 
-xTortuga2 = -1.7
-yTortuga2 = 0.28
-#ubicacion de la teercera hilera de tortugas 
-xTortuga3 = -2.5
-yTortuga3 = 0.28
-#ubicacion de la priemra hilera de nenufares  
-xNenufar1 = -1.5
-yNenufar1 = 0.7
-#ubicacion de la segunda hilera de nenufares  
-xNenufar2 = -2.0
-yNenufar2 = 0.7
-#ubicacion de la teercera hilera de nenufares 
-xNenufar3 = -2.8
-yNenufar3 = 0.7
+#ubicacion de la mosca 1
+xMosca1 = -0.8
+yMosca1 = 0.85
+
+#ubicacion de la mosca 2
+xMosca2 = -0.3
+yMosca2 = 0.85
+
+#ubicacion de la mosca 3
+xMosca3 = 0.3
+yMosca3 = 0.85
+
+#ubicacion de la mosca 4
+xMosca4 = 0.78
+yMosca4 = 0.85
+
 #ubicacion de la rana al iniciar la partida
-
 xVidas = -0.9
 yVidas = -0.9
+
 #variables de colisiones de las moscas
 colisionandoMosca1 = False
 colisionandoMosca2 = False
 colisionandoMosca3 = False
 colisionandoMosca4 = False
 colisionandoCarro = False
+
 #angulo que se necesita para girar a la rana
 tiempo_anterior = 0.0
 
 #Clases importadas
 rana = Rana()
+
 #dibujar a los troncos
 tronco1 = Tronco(1.2, 0.1, 0.7, 0.007)
 tronco2 = Tronco(1.8, 0.1, 0.7, 0.007)
@@ -60,11 +49,7 @@ tronco3 = Tronco(2.4, 0.1, 0.7, 0.007)
 tronco4 = Tronco(1.6, 0.5, 1.1, 0.004)
 tronco5 = Tronco(2.2, 0.5, 1.1, 0.004)
 tronco6 = Tronco(2.8, 0.5, 1.1, 0.004)
-#dibujar a las moscas
-mosca1 = Mosca(-0.8, 0.85)
-mosca2 = Mosca(-0.3, 0.85)
-mosca3 = Mosca(0.3, 0.85)
-mosca4 = Mosca(0.78, 0.85)
+
 #dibujar a los carros
 carro1 = Carro(1.2,-0.65)
 carro2 = Carro(1.7,-0.65)
@@ -76,12 +61,22 @@ nenufar1 = Nenufar(-1.5, 0.7)
 nenufar2 = Nenufar(-2.0, 0.7)
 nenufar3 = Nenufar(-2.8, 0.7)
 
+#dibujar a los camiones
+camion1 = Camion(1.2,-0.3)
+camion2 = Camion(2.0, -0.3)
+camion3 = Camion(-1.2,-0.5)
+camion4 = Camion(-2.0,-0.5)
+
+#dibujar a las tortugas
+tortuga1 = Tortuga(-1.2, 0.28)
+tortuga2 = Tortuga(-1.7, 0.28)
+tortuga3 = Tortuga(-2.5,0.28)
+
 def checar_colisiones():
     global colisionandoMosca1
     global colisionandoMosca2
     global colisionandoMosca3
     global colisionandoMosca4
-    global colisionandoCarro
     global rana
     # Si extremaDerechaCarrito > extremaIzquierdaObstaculo
     # Y extremaIzquierdaCarrito < extremaDerechaObstaculo
@@ -111,154 +106,7 @@ def checar_colisiones():
 def actualizar(window):
     global rana
     rana.actualizar(window)
-    #checar_colisiones()
-
-def dibujarRanaSkin():
-
-    #Cabeza
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(-0.03, 0.06, 0.0)
-    glVertex3f(0.03, 0.06, 0.0)
-    glVertex3f(0.03, 0.02, 0.0)
-    glVertex3f(-0.03, 0.02, 0.0)
-    glEnd()
-    #Cuerpo
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(-0.04, 0.02, 0.0)
-    glVertex3f(0.04, 0.02, 0.0)
-    glVertex3f(0.04, -0.06, 0.0)
-    glVertex3f(-0.04, -0.06, 0.0)
-    glEnd()
-    #Ojo1
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(0.02, 0.04, 0.0)
-    glVertex3f(0.05, 0.04, 0.0)
-    glVertex3f(0.05, 0.07, 0.0)
-    glVertex3f(0.02, 0.07, 0.0)
-    glEnd()
-    #Pupila
-    glBegin(GL_QUADS)
-    glColor3f(0.0, 0.1, 0.0)
-    glVertex3f(0.025, 0.055, 0.0)
-    glVertex3f(0.045, 0.055, 0.0)
-    glVertex3f(0.045, 0.065, 0.0)
-    glVertex3f(0.025, 0.065, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.152, 0.952, 0.776)
-    glVertex3f(0.025, 0.055, 0.0)
-    glVertex3f(0.045, 0.055, 0.0)
-    glVertex3f(0.045, 0.045, 0.0)
-    glVertex3f(0.025, 0.045, 0.0)
-    glEnd()
-
-    #Ojo2
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(-0.02, 0.04, 0.0)
-    glVertex3f(-0.05, 0.04, 0.0)
-    glVertex3f(-0.05, 0.07, 0.0)
-    glVertex3f(-0.02, 0.07, 0.0)
-    glEnd()
-
-    #pupila2
-
-    glBegin(GL_QUADS)
-    glColor3f(0.0, 0.1, 0.0)
-    glVertex3f(-0.025, 0.055, 0.0)
-    glVertex3f(-0.045, 0.055, 0.0)
-    glVertex3f(-0.045, 0.065, 0.0)
-    glVertex3f(-0.025, 0.065, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.152, 0.952, 0.776)
-    glVertex3f(-0.025, 0.055, 0.0)
-    glVertex3f(-0.045, 0.055, 0.0)
-    glVertex3f(-0.045, 0.045, 0.0)
-    glVertex3f(-0.025, 0.045, 0.0)
-    glEnd()
-
-    #pata1
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(-0.035, -0.06, 0.0)
-    glVertex3f(-0.02, -0.06, 0.0)
-    glVertex3f(-0.02, -0.08, 0.0)
-    glVertex3f(-0.035, -0.08, 0.0)
-    glEnd()
-
-    #pata2
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(0.035, -0.06, 0.0)
-    glVertex3f(0.02, -0.06, 0.0)
-    glVertex3f(0.02, -0.08, 0.0)
-    glVertex3f(0.035, -0.08, 0.0)
-    glEnd()
-
-    #pata3
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(0.04, 0.01, 0.0)
-    glVertex3f(0.06, 0.01, 0.0)
-    glVertex3f(0.06, -0.05, 0.0)
-    glVertex3f(0.04, -0.05, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(0.06, -0.05, 0.0)
-    glVertex3f(0.08, -0.05, 0.0)
-    glVertex3f(0.08, -0.07, 0.0)
-    glVertex3f(0.06, -0.07, 0.0)
-    glEnd()
-
-    #pata4
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(-0.04, 0.01, 0.0)
-    glVertex3f(-0.06, 0.01, 0.0)
-    glVertex3f(-0.06, -0.05, 0.0)
-    glVertex3f(-0.04, -0.05, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.513, 0.905, 0.180)
-    glVertex3f(-0.06, -0.05, 0.0)
-    glVertex3f(-0.08, -0.05, 0.0)
-    glVertex3f(-0.08, -0.07, 0.0)
-    glVertex3f(-0.06, -0.07, 0.0)
-    glEnd()
-
-    #Boca
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.015, 0.01, 0.0)
-    glVertex3f(0.015, 0.01, 0.0)
-    glVertex3f(0.015, 0.00, 0.0)
-    glVertex3f(-0.015, 0.00, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.015, 0.01, 0.0)
-    glVertex3f(-0.025, 0.01, 0.0)
-    glVertex3f(-0.025, 0.02, 0.0)
-    glVertex3f(-0.015, 0.02, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(0.015, 0.01, 0.0)
-    glVertex3f(0.025, 0.01, 0.0)
-    glVertex3f(0.025, 0.02, 0.0)
-    glVertex3f(0.015, 0.02, 0.0)
-    glEnd()
+    checar_colisiones()
 
 def dibujarAllTronco():
     global tronco1
@@ -287,396 +135,27 @@ def dibujarAllCarros():
     carro3.dibujar_1(rana)
     carro4.dibujar_2(rana)
 
-def dibujarCamion():
-    glBegin(GL_QUADS)
-    glColor3f(0.0, 0.0, 1.0)
-    glVertex3f(-0.08, 0.08, 0.0)
-    glVertex3f(0.18, 0.08, 0.0)
-    glVertex3f(0.18, -0.08, 0.0)
-    glVertex3f(-0.08, -0.08, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.06, 0.08, 0.0)
-    glVertex3f(-0.01, 0.08, 0.0)
-    glVertex3f(-0.01, 0.10, 0.0)
-    glVertex3f(-0.06, 0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.06, -0.08, 0.0)
-    glVertex3f(-0.01, -0.08, 0.0)
-    glVertex3f(-0.01, -0.10, 0.0)
-    glVertex3f(-0.06, -0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(0.07+0.04, -0.08, 0.0)
-    glVertex3f(0.12+0.04, -0.08, 0.0)
-    glVertex3f(0.12+0.04, -0.10, 0.0)
-    glVertex3f(0.07+0.04, -0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(0.07+0.04, 0.08, 0.0)
-    glVertex3f(0.12+0.04, 0.08, 0.0)
-    glVertex3f(0.12+0.04, 0.10, 0.0)
-    glVertex3f(0.07+0.04, 0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.910, 0.0, 0.0)
-    glVertex3f(-0.08, 0.03, 0.0)
-    glVertex3f(-0.098, 0.03, 0.0)
-    glVertex3f(-0.098, -0.03, 0.0)
-    glVertex3f(-0.08, -0.03, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.0, 0.0, 1.0)
-    glVertex3f(-0.098, 0.08, 0.0)
-    glVertex3f(-0.18, 0.08, 0.0)
-    glVertex3f(-0.18, -0.08, 0.0)
-    glVertex3f(-0.098, -0.08, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.15, 0.08, 0.0)
-    glVertex3f(-0.11, 0.08, 0.0)
-    glVertex3f(-0.11, 0.10, 0.0)
-    glVertex3f(-0.15, 0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.15, -0.08, 0.0)
-    glVertex3f(-0.11, -0.08, 0.0)
-    glVertex3f(-0.11, -0.10, 0.0)
-    glVertex3f(-0.15, -0.10, 0.0)
-    glEnd()
-
-def dibujarCamion_2():
-
-    glBegin(GL_QUADS)
-    glColor3f(1.0, 1.0, 1.0)
-    glVertex3f(-0.08, 0.08, 0.0)
-    glVertex3f(0.18, 0.08, 0.0)
-    glVertex3f(0.18, -0.08, 0.0)
-    glVertex3f(-0.08, -0.08, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.06, 0.08, 0.0)
-    glVertex3f(-0.01, 0.08, 0.0)
-    glVertex3f(-0.01, 0.10, 0.0)
-    glVertex3f(-0.06, 0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(-0.06, -0.08, 0.0)
-    glVertex3f(-0.01, -0.08, 0.0)
-    glVertex3f(-0.01, -0.10, 0.0)
-    glVertex3f(-0.06, -0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(0.07+0.04, -0.08, 0.0)
-    glVertex3f(0.12+0.04, -0.08, 0.0)
-    glVertex3f(0.12+0.04, -0.10, 0.0)
-    glVertex3f(0.07+0.04, -0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(0.07+0.04, 0.08, 0.0)
-    glVertex3f(0.12+0.04, 0.08, 0.0)
-    glVertex3f(0.12+0.04, 0.10, 0.0)
-    glVertex3f(0.07+0.04, 0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.910, 0.0, 0.0)
-    glVertex3f(0.08+0.10, 0.03, 0.0)
-    glVertex3f(0.098+0.10, 0.03, 0.0)
-    glVertex3f(0.098+0.10, -0.03, 0.0)
-    glVertex3f(0.08+0.10, -0.03, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(1.0, 1.0, 1.0)
-    glVertex3f(0.098+0.10, 0.08, 0.0)
-    glVertex3f(0.18+0.10, 0.08, 0.0)
-    glVertex3f(0.18+0.10, -0.08, 0.0)
-    glVertex3f(0.098+0.10, -0.08, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(0.15+0.10, 0.08, 0.0)
-    glVertex3f(0.11+0.10, 0.08, 0.0)
-    glVertex3f(0.11+0.10, 0.10, 0.0)
-    glVertex3f(0.15+0.10, 0.10, 0.0)
-    glEnd()
-
-    glBegin(GL_QUADS)
-    glColor3f(0.1, 0.0, 0.0)
-    glVertex3f(0.15+0.10, -0.08, 0.0)
-    glVertex3f(0.11+0.10, -0.08, 0.0)
-    glVertex3f(0.11+0.10, -0.10, 0.0)
-    glVertex3f(0.15+0.10, -0.10, 0.0)
-    glEnd()
-
-def dibujarCamion1():
-    global xCamion1
-    global yCamion1
-    
-    glPushMatrix()
-    glTranslate(xCamion1, yCamion1, 0.0)
-    glScalef(0.5,0.8,1)
-    dibujarCamion()
-    glPopMatrix()
-
-    if xCamion1 > -1.3:
-        xCamion1 = xCamion1 - 0.006
-    else:
-        xCamion1 = 1.2
-
-    if xRana + 0.05 > xCamion1 - 0.055 and xRana - 0.05 < xCamion1 + 0.055 and yRana + 0.05 > yCamion1 - 0.05 and yRana - 0.05 < yCamion1 + 0.05:
-        resetPosition()
-        vidasRana()
-
-def dibujarCamion2():
-    global xCamion2
-    global yCamion2
-
-    glPushMatrix()
-    glTranslate(xCamion2, yCamion2, 0.0)
-    glScalef(0.5,0.8,1)
-    dibujarCamion()
-    glPopMatrix()
-
-    if xCamion2 > -1.3:
-        xCamion2 = xCamion2 - 0.006
-    else:
-        xCamion2 = 1.2
-
-    if xRana + 0.05 > xCamion2 - 0.055 and xRana - 0.05 < xCamion2 + 0.055 and yRana + 0.05 > yCamion2 - 0.05 and yRana - 0.05 < yCamion2 + 0.05:
-        resetPosition()
-        vidasRana()
-
-def dibujarCamion3():
-    global xCamion3
-    global yCamion3
-    
-    glPushMatrix()
-    glTranslate(xCamion3, yCamion3, 0.0)
-    glScalef(0.5,0.8,1)
-    dibujarCamion_2()
-    
-    glPopMatrix()
-
-    if xCamion3 < 1.3:
-        xCamion3 = xCamion3 + 0.003
-    else:
-        xCamion3 = -1.2
-    if xRana + 0.05 > xCamion3 - 0.04 and xRana - 0.05 < xCamion3 + 0.12 and yRana + 0.05 > yCamion3 - 0.05 and yRana - 0.05 < yCamion3 + 0.05:
-        resetPosition()
-        vidasRana()
-
-def dibujarCamion4():
-    global xCamion4
-    global yCamion4
-    
-    glPushMatrix()
-    glTranslate(xCamion4, yCamion4, 0.0)
-    glScalef(0.5,0.8,1)
-    dibujarCamion_2()
-    
-    glPopMatrix()
-
-    if xCamion4 < 1.3:
-        xCamion4 = xCamion4 + 0.003
-    else:
-        xCamion4 = -1.2
-    if xRana + 0.05 > xCamion4 - 0.04 and xRana - 0.05 < xCamion4 + 0.12 and yRana + 0.05 > yCamion4 - 0.05 and yRana - 0.05 < yCamion4 + 0.05:
-        resetPosition()
-        vidasRana()
-
 def dibujarAllCamiones():
-    dibujarCamion1()
-    dibujarCamion2()
-    dibujarCamion3()
-    dibujarCamion4()
+    global camion1
+    global camion2
+    global camion3
+    global camion4
+    global rana
 
-def dibujarTortuga():
-
-    #pata delantera izq
-    glPushMatrix()
-    glRotatef(-44, 0, 0, 1)
-    glBegin(GL_POLYGON)
-    glColor3f(0.411, 0.662, 0.090)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.02 - 0.10, sin(angulo) * 0.04 - 0.18 , 0.0)
-    glEnd()
-    glPopMatrix()
-
-    #pata delantera der
-    glPushMatrix()
-    glRotatef(44, 0, 0, 1)
-    glBegin(GL_POLYGON)
-    glColor3f(0.411, 0.662, 0.090)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.02 - 0.10, sin(angulo) * 0.04 + 0.18 , 0.0)
-    glEnd()
-    glPopMatrix()
-
-    #pata trasera der
-    glPushMatrix()
-    glRotatef(-44, 0, 0, 1)
-    glBegin(GL_POLYGON)
-    glColor3f(0.411, 0.662, 0.090)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.02 - 0.09, sin(angulo) * 0.04 - 0.02, 0.0)
-    glEnd()
-    glPopMatrix()
-
-    #pata trasera izq
-    glPushMatrix()
-    glRotatef(44, 0, 0, 1)
-    glBegin(GL_POLYGON)
-    glColor3f(0.411, 0.662, 0.090)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.02 - 0.08, sin(angulo) * 0.04 + 0.02, 0.0)
-    glEnd()
-    glPopMatrix()
-
-    #cabeza
-
-    glBegin(GL_POLYGON)
-    glColor3f(0.411, 0.662, 0.090)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.06 - 0.23, sin(angulo) * 0.03 + 0.0, 0.0)
-    glEnd()
-
-    #caparazón
-
-    glBegin(GL_POLYGON)
-    glColor3f(0.894, 0.376, 0.078)
-    for x in range(360):
-        angulo = x * 3.14159 / 180.0
-        glVertex3f(cos(angulo) * 0.10 - 0.15, sin(angulo) * 0.07 + 0.0, 0.0)
-    glEnd()
-
-def dibujarHilera2Tortuga():
-    glPushMatrix()
-    glTranslate(0.0, 0.0, 0.0)
-    glScalef(0.6,0.8,1)
-    dibujarTortuga()
-    glPopMatrix()
-
-    glPushMatrix()
-    glTranslate(0.2, 0.0, 0.0)
-    glScalef(0.6,0.8,1)
-    dibujarTortuga()
-    glPopMatrix()
-
-def dibujarHilera3Tortuga():
-    glPushMatrix()
-    glTranslate(0.0, 0.0, 0.0)
-    glScalef(0.6,0.8,1)
-    dibujarTortuga()
-    glPopMatrix()
-
-    glPushMatrix()
-    glTranslate(0.2, 0.0, 0.0)
-    glScalef(0.6,0.8,1)
-    dibujarTortuga()
-    glPopMatrix()
-
-    glPushMatrix()
-    glTranslate(0.4, 0.0, 0.0)
-    glScalef(0.6,0.8,1)
-    dibujarTortuga()
-    glPopMatrix()
-
-def dibujarTortuga1():
-    global xTortuga1
-    global yTortuga1
-
-    glPushMatrix()
-    glTranslate(xTortuga1, yTortuga1, 0.0)
-    glRotate(180, 0.0, 0.0, 1.0)
-    glScalef(0.6,0.8,1)
-    dibujarHilera3Tortuga()
-    glPopMatrix()
-
-    if xTortuga1 < 1.3:
-        xTortuga1 = xTortuga1 + 0.008
-    else:
-        xTortuga1 = -1.2
-
-    if xRana + 0.05 > xTortuga1 - 0.2 and xRana - 0.05 < xTortuga1 + 0.05 and yRana + 0.05 > yTortuga1 - 0.05 and yRana - 0.05 < yTortuga1 + 0.05:
-        vidasRana()
-        resetPosition()
-
-def dibujarTortuga2():
-    global xTortuga2
-    global yTortuga2
-
-    glPushMatrix()
-    glTranslate(xTortuga2, yTortuga2, 0.0)
-    glRotate(180, 0.0, 0.0, 1.0)
-    glScalef(0.6,0.8,1)
-    dibujarHilera2Tortuga()
-    glPopMatrix()
-
-    if xTortuga2 < 1.3:
-        xTortuga2 = xTortuga2 + 0.008
-    else:
-        xTortuga2 = -1.2
-
-    if xRana + 0.05 > xTortuga2 - 0.1 and xRana - 0.05 < xTortuga2 + 0.08 and yRana + 0.05 > yTortuga2 - 0.05 and yRana - 0.05 < yTortuga2 + 0.05:
-        vidasRana()
-        resetPosition()
-
-def dibujarTortuga3():
-    global xTortuga3
-    global yTortuga3
-
-    glPushMatrix()
-    glTranslate(xTortuga3, yTortuga3, 0.0)
-    glRotate(180, 0.0, 0.0, 1.0)
-    glScalef(0.6,0.8,1)
-    dibujarHilera2Tortuga()
-    glPopMatrix()
-
-    if xTortuga3 < 1.3:
-        xTortuga3 = xTortuga3 + 0.008
-    else:
-        xTortuga3 = -1.2
-
-    # Cuando la rana colisione con el carro 1 se convertira en True, la rana muera y regresara al punto de partida
-    if xRana + 0.05 > xTortuga3 - 0.1 and xRana - 0.05 < xTortuga3 + 0.08 and yRana + 0.05 > yTortuga3 - 0.05 and yRana - 0.05 < yTortuga3 + 0.05:
-        vidasRana()
-        resetPosition()
+    camion1.dibujarCamion(rana)
+    camion2.dibujarCamion(rana)
+    camion3.dibujarCamion2(rana)
+    camion4.dibujarCamion2(rana)
 
 def dibujarAllTortuga():
-    dibujarTortuga1()
-    dibujarTortuga2()
-    dibujarTortuga3()
+    global tortuga1
+    global tortuga2
+    global tortuga3
+    global rana
+    
+    tortuga1.dibujarTortuga1(rana)
+    tortuga2.dibujarTortuga2(rana)
+    tortuga3.dibujarTortuga2(rana)
 
 def dibujarAllNenufar():
     global nenufar1
@@ -688,17 +167,248 @@ def dibujarAllNenufar():
     nenufar2.dibujarNenufar2(rana)
     nenufar3.dibujarNenufar1(rana)
 
+def dibujarRanaSkin():
+
+        #Cabeza
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.03, 0.06, 0.0)
+        glVertex3f(0.03, 0.06, 0.0)
+        glVertex3f(0.03, 0.02, 0.0)
+        glVertex3f(-0.03, 0.02, 0.0)
+        glEnd()
+        #Cuerpo
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.04, 0.02, 0.0)
+        glVertex3f(0.04, 0.02, 0.0)
+        glVertex3f(0.04, -0.06, 0.0)
+        glVertex3f(-0.04, -0.06, 0.0)
+        glEnd()
+        #Ojo1
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.02, 0.04, 0.0)
+        glVertex3f(0.05, 0.04, 0.0)
+        glVertex3f(0.05, 0.07, 0.0)
+        glVertex3f(0.02, 0.07, 0.0)
+        glEnd()
+        #Pupila
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.1, 0.0)
+        glVertex3f(0.025, 0.055, 0.0)
+        glVertex3f(0.045, 0.055, 0.0)
+        glVertex3f(0.045, 0.065, 0.0)
+        glVertex3f(0.025, 0.065, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.152, 0.952, 0.776)
+        glVertex3f(0.025, 0.055, 0.0)
+        glVertex3f(0.045, 0.055, 0.0)
+        glVertex3f(0.045, 0.045, 0.0)
+        glVertex3f(0.025, 0.045, 0.0)
+        glEnd()
+
+        #Ojo2
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.02, 0.04, 0.0)
+        glVertex3f(-0.05, 0.04, 0.0)
+        glVertex3f(-0.05, 0.07, 0.0)
+        glVertex3f(-0.02, 0.07, 0.0)
+        glEnd()
+
+        #pupila2
+
+        glBegin(GL_QUADS)
+        glColor3f(0.0, 0.1, 0.0)
+        glVertex3f(-0.025, 0.055, 0.0)
+        glVertex3f(-0.045, 0.055, 0.0)
+        glVertex3f(-0.045, 0.065, 0.0)
+        glVertex3f(-0.025, 0.065, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.152, 0.952, 0.776)
+        glVertex3f(-0.025, 0.055, 0.0)
+        glVertex3f(-0.045, 0.055, 0.0)
+        glVertex3f(-0.045, 0.045, 0.0)
+        glVertex3f(-0.025, 0.045, 0.0)
+        glEnd()
+
+        #pata1
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.035, -0.06, 0.0)
+        glVertex3f(-0.02, -0.06, 0.0)
+        glVertex3f(-0.02, -0.08, 0.0)
+        glVertex3f(-0.035, -0.08, 0.0)
+        glEnd()
+
+        #pata2
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.035, -0.06, 0.0)
+        glVertex3f(0.02, -0.06, 0.0)
+        glVertex3f(0.02, -0.08, 0.0)
+        glVertex3f(0.035, -0.08, 0.0)
+        glEnd()
+
+        #pata3
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.04, 0.01, 0.0)
+        glVertex3f(0.06, 0.01, 0.0)
+        glVertex3f(0.06, -0.05, 0.0)
+        glVertex3f(0.04, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(0.06, -0.05, 0.0)
+        glVertex3f(0.08, -0.05, 0.0)
+        glVertex3f(0.08, -0.07, 0.0)
+        glVertex3f(0.06, -0.07, 0.0)
+        glEnd()
+
+        #pata4
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.04, 0.01, 0.0)
+        glVertex3f(-0.06, 0.01, 0.0)
+        glVertex3f(-0.06, -0.05, 0.0)
+        glVertex3f(-0.04, -0.05, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.513, 0.905, 0.180)
+        glVertex3f(-0.06, -0.05, 0.0)
+        glVertex3f(-0.08, -0.05, 0.0)
+        glVertex3f(-0.08, -0.07, 0.0)
+        glVertex3f(-0.06, -0.07, 0.0)
+        glEnd()
+
+        #Boca
+        glBegin(GL_QUADS)
+        glColor3f(0.1, 0.0, 0.0)
+        glVertex3f(-0.015, 0.01, 0.0)
+        glVertex3f(0.015, 0.01, 0.0)
+        glVertex3f(0.015, 0.00, 0.0)
+        glVertex3f(-0.015, 0.00, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.1, 0.0, 0.0)
+        glVertex3f(-0.015, 0.01, 0.0)
+        glVertex3f(-0.025, 0.01, 0.0)
+        glVertex3f(-0.025, 0.02, 0.0)
+        glVertex3f(-0.015, 0.02, 0.0)
+        glEnd()
+
+        glBegin(GL_QUADS)
+        glColor3f(0.1, 0.0, 0.0)
+        glVertex3f(0.015, 0.01, 0.0)
+        glVertex3f(0.025, 0.01, 0.0)
+        glVertex3f(0.025, 0.02, 0.0)
+        glVertex3f(0.015, 0.02, 0.0)
+        glEnd()
+
+def dibujarMosca():
+    glBegin(GL_POLYGON)
+    glColor3f(0.0, 0.1, 0.090)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.016 - 0.01, sin(angulo) * 0.016 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_POLYGON)
+    glColor3f(0.0, 0.1, 0.090)
+    for x in range(360):
+        angulo = x * 3.14159 / 180.0
+        glVertex3f(cos(angulo) * 0.02 + 0.01, sin(angulo) * 0.02 + 0.0, 0.0)
+    glEnd()
+
+    glBegin(GL_TRIANGLES)
+    glColor3f(1.0, 1.0, 1.0)
+    glVertex3f(-0.01, 0.00, 0.0)
+    glVertex3f(0.04, 0.06, 0.0)
+    glVertex3f(0.04, 0.02, 0.0)
+    glEnd()
+
+    glBegin(GL_TRIANGLES)
+    glColor3f(1.0, 1.0, 1.0)
+    glVertex3f(-0.01, 0.00, 0.0)
+    glVertex3f(0.04, -0.06, 0.0)
+    glVertex3f(0.04, -0.02, 0.0)
+    glEnd()
+
+def dibujarMosca1():
+    global colisionandoMosca1
+    global xMosca1
+    global yMosca1
+
+    glPushMatrix()
+    glTranslate(xMosca1, yMosca1, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
+    if colisionandoMosca1 == False:
+        dibujarMosca()
+
+    else: 
+        glScalef(0.7,0.7,1)
+        dibujarRanaSkin()
+    glPopMatrix()
+
+def dibujarMosca2():
+    global colisionandoMosca2
+    global xMosca2
+    global yMosca2
+
+    glPushMatrix()
+    glTranslate(xMosca2, yMosca2, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
+    if colisionandoMosca2 == False:
+        dibujarMosca()
+    else:
+        glScalef(0.7,0.7,1)
+        dibujarRanaSkin()
+    glPopMatrix()
+
+def dibujarMosca3():
+    global colisionandoMosca3
+    global xMosca3
+    global yMosca3
+
+    glPushMatrix()
+    glTranslate(xMosca3, yMosca3, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
+    if colisionandoMosca3 == False:
+        dibujarMosca()
+    else:
+        glScalef(0.7,0.7,1)
+        dibujarRanaSkin()
+    glPopMatrix()
+
+def dibujarMosca4():
+    global colisionandoMosca4
+    global xMosca4
+    global yMosca4
+
+    glPushMatrix()
+    glTranslate(xMosca4, yMosca4, 0.0)
+    # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
+    if colisionandoMosca4 == False:
+        dibujarMosca()
+    else:
+        glScalef(0.7,0.7,1)
+        dibujarRanaSkin()    
+    glPopMatrix()
 
 def dibujarAllMoscas():
-    global mosca1
-    global mosca2
-    global mosca3
-    global mosca4
-
-    mosca1.dibujar()
-    mosca2.dibujar()
-    mosca3.dibujar()
-    mosca4.dibujar()
+    dibujarMosca1()
+    dibujarMosca2()
+    dibujarMosca3()
+    dibujarMosca4()
 
 def dibujarCesped():
 
@@ -902,18 +612,18 @@ def dibujarHilera3Vidas():
     glPopMatrix()
 
 def dibujarVidas():
-    global vidasdeRana
+    global rana
     global xVidas
     global yVidas
 
     glPushMatrix()
     glTranslate(xVidas, yVidas, 0.0)
     # Si colisionando es False se creara la mosca, pero si es True se creara la rana para sustituirla
-    if vidasdeRana == 3:
+    if rana.vida == 3:
         dibujarHilera3Vidas()
-    elif vidasdeRana == 2:
+    elif rana.vida == 2:
         dibujarHilera2Vidas()
-    elif vidasdeRana == 1:
+    elif rana.vida == 1:
         glPushMatrix()
         glTranslate(0.0, 0.0, 0.0)
         glScalef(0.6,0.8,1)
@@ -1677,21 +1387,20 @@ def dibujar():
     
     # rutinas de dibujo
     #dibujarObstaculo()
-    #dibujarCamino()
-    #dibujarCesped()
-    #dibujarCesped2()
-    #dibujarParteArriba()
-    #dibujarAllTronco()
-    #dibujarAllCamiones()
+    dibujarCamino()
+    dibujarCesped()
+    dibujarCesped2()
+    dibujarParteArriba()
+    dibujarAllTronco()
+    dibujarAllCamiones()
     dibujarAllCarros()
-    #dibujarAllTortuga()
-    #dibujarAllNenufar()
-    #dibujarAllMoscas()
-    #dibujarFloresRocas()
-    #dibujarVidas()
+    dibujarAllTortuga()
+    dibujarAllNenufar()
+    dibujarAllMoscas()
+    dibujarFloresRocas()
+    dibujarVidas()
     rana.dibujar()
     #dibujarRanaSkin()
-
 
 def main():
     # inicia glfw

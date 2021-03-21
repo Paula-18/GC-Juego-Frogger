@@ -71,12 +71,3 @@ class Tronco():
         if rana.posicionX + 0.05 > self.posicionX - 0.11 and rana.posicionX - 0.05 < self.posicionX + 0.13 and rana.posicionY + 0.05 > self.posicionY - 0.05 and rana.posicionY - 0.05 < self.posicionY + 0.05:
             rana.vidas()
             rana.resetPosition()
-
-
-    #def dibujarTronco(self):
-        
-        
-        #    # Cuando la rana colisione con el tronco 1 se convertira en True, la rana muera y regresara al punto de partida
-        #    if xRana + 0.05 > xTronco4 - 0.11 and xRana - 0.05 < xTronco4 + 0.13 and yRana + 0.05 > yTronco4 - 0.05 and yRana - 0.05 < yTronco4 + 0.05:
-        #        vidasRana()
-        #        resetPosition()

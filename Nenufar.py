@@ -12,7 +12,7 @@ class Nenufar():
         self.posicionX = x
         self.posicionY = y
 
-    def dibujarNenufar():
+    def dibujarNenufar(self):
         glPushMatrix()
         glRotatef(-44, 0, 0, 1)
         glBegin(GL_POLYGON)
@@ -43,7 +43,7 @@ class Nenufar():
         glPushMatrix()
         glTranslate(0.1, 0.0, 0.0)
         glScalef(0.6,0.8,1)
-        dibujarNenufar()
+        self.dibujarNenufar()
         glPopMatrix()
 
     def dibujarHilera3Nenufar(self):
@@ -56,13 +56,13 @@ class Nenufar():
         glPushMatrix()
         glTranslate(0.1, 0.0, 0.0)
         glScalef(0.6,0.8,1)
-        dibujarNenufar()
+        self.dibujarNenufar()
         glPopMatrix()
 
         glPushMatrix()
         glTranslate(0.2, 0.0, 0.0)
         glScalef(0.6,0.8,1)
-        dibujarNenufar()
+        self.dibujarNenufar()
         glPopMatrix()
 
     def dibujarNenufar1(self, rana):
